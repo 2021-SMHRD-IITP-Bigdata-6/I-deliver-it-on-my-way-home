@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.smhrd.mapper.BoardMapper">
+    
+     <select id="selectAll" resultType="kr.smhrd.domain.Board">
+       select * from  board
+     </select>
+    
+   <insert id="boardInsert" parameterType="kr.smhrd.domain.Board">
+       insert into board(title,content,writer)
+       values(#{title},#{content},#{writer}) <!--  ? 가 #{}로 쓰이는것이다. -->
+       
+   </insert>
+    
+   <select id="boardContent" resultType="kr.smhrd.domain.Board" parameterType="int">
+       select * from board where idx=#{idx}
+   </select>
+   
+       <update id="boardUpdate" parameterType="kr.smhrd.domain.Board" >
+           update board set title=#{title},content=#{content}
+           where idx=#{idx}
+       </update>
+       
+       <update id="boardUpdateTW" parameterType="kr.smhrd.domain.Board">
+           update board set title=#{title},writer=#{writer}
+           where idx=#{idx}
+       </update>
+</mapper>
+
