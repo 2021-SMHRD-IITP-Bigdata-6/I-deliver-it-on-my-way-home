@@ -14,9 +14,8 @@ public class UserController {
 			return "user/myPage";
 		}
 		
-		@RequestMapping("/login1.do")
+		@GetMapping("/login")
 		public String login() {
-			System.out.println("d");
 			return "user/login";
 		}
 	}
