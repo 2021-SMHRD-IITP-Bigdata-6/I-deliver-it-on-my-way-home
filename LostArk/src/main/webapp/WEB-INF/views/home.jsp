@@ -476,13 +476,14 @@ footer .box {
 						type="text" value="${BMaddress.address2 }" id="deleveryAddress2"
 						readonly placeholder="주소를 입력해 주세요" name="address2"><br>
 				</div>
+		
 
 				<div class="search_btn">
 					<label for="search_btn"> <i class="fas fa-search"></i>
 					</label> <input type="button" name="search" id="search_btn">
 
 				</div>
-
+				<%@ include file="/WEB-INF/views/include/modifyAddress.jsp"%>
 			</div>
 		</section>
 		<section class="category_box">
