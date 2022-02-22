@@ -139,11 +139,13 @@
 			<version>1.3.2</version>
 		</dependency>
 		<!-- mysql 드라이버 -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.47</version>
-		</dependency>
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.28</version>
+</dependency>
+
 		<!-- 스프링 jdbc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
