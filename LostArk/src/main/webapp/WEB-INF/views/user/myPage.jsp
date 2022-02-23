@@ -3,7 +3,122 @@
 <%@ include file="/WEB-INF/views/include/link.jsp" %>
 <link rel="stylesheet" href="/css/layout/nav.css">
 <link rel="stylesheet" href="/css/user/myPage.css">
+<style>
+section.title {
+    width: 100%;
+}
  
+section.title h1 {
+    text-align: center;
+    margin : 30px 0 30px 0 ;
+}
+ 
+/* 콘텐츠 */
+ 
+main {
+	/* min-height: 390px; */
+}
+ 
+main .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+ 
+main .container .grid_box {
+	margin: 0 auto 30px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 75px 1fr 1fr;
+	width: 67%;
+	text-align: center;
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+ 
+main .container .grid_box > div {
+	border: 1px solid #ddd; 
+	border-bottom: none;
+	border-right: none;
+}
+ 
+main .container .grid_box .login_box {
+    grid-column-end: span 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px; 
+}
+ 
+main .container .grid_box .login_box span {
+	display: inline;
+}
+ 
+main .container .grid_box .login_box a {
+	font-size: 2rem;
+	font-weight: bold
+}
+	
+main .container .grid_box .login_box a:after {
+	content: '>';
+	color: rgb(202, 198, 198);
+	margin-left: 5px;
+}
+ 
+main .container .grid_box .login_box .logout {
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-size: 1.5rem;
+}
+ 
+main .container .grid_box > div a span:last-child {
+	padding-bottom: 15px;
+	margin-top: -10px;
+}
+ 
+main .container .grid_box > div a span {
+	display: block;
+}
+ 
+main .container .grid_box > div img {
+	width: 130px;
+}
+ 
+ 
+@media (max-width:1023px) {
+	main .container .grid_box {
+		width: 80%;
+	}
+}
+@media  (max-width:767px) {
+	.wrap {
+		min-height: calc(100vh - 277px);
+	}
+	
+	main .container .grid_box {
+		width: 90%;
+		grid-template-rows: 50px 1fr 1fr;
+	}
+	
+	main .container .grid_box > div img {
+	    width: 100px;
+	} 
+}
+ 
+ 
+@media  (max-width:480px) {
+	.wrap {
+		min-height: calc(100vh - 274px);
+	}
+	main .container .grid_box {
+		width: 99%;
+	}
+	
+	main .container .grid_box > div img {
+	    width: 80px;
+	} 
+	
+}</style>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
  
 	<div class="wrap"> 
@@ -34,7 +149,7 @@
 		    		<div>
 		    			<a href="/user/point" onclick="return loginCheck();">
 	                       	<span class="img_box">
-	                       		<img src="/img/icon11.png" alt="포인트">
+	                       		<img src="resources/img/icon11.png" alt="포인트">
 	                       	</span>
 	                       	<span>포인트</span>
 	                  	</a>
@@ -44,7 +159,7 @@
 		    		<div>
 		    			<a class="updating" href="/myPage/coupon" onclick="return false;">
 	               		  	<span class="img_box">
-	                			<img src="/img/icon22.png" alt="쿠폰함">
+	                			<img src="resources/img/icon22.png" alt="쿠폰함">
 	               			</span>
 	               			<span>쿠폰함</span>
 	              		</a>
@@ -54,7 +169,7 @@
 		    		<div>
 		    			<a class="updating" href="/myPage/gift" onclick="return false;">
 	                 		<span class="img_box">
-	                 			<img src="/img/icon33.png" alt="선물함">
+	                 			<img src="resources/img/icon33.png" alt="선물함">
 	                 		</span>
 	                        <span>선물함</span>
 						</a>
@@ -64,7 +179,7 @@
 		    		<div>
 						<a href="/likes/store">
 							<span class="img_box">
-								<img src="/img/icon44.png" alt="찜한가게">
+								<img src="resources/img/icon44.png" alt="찜한가게">
 							</span>
 							<span>찜한가게</span>
 						</a>
@@ -74,7 +189,7 @@
 		    		<div>
 						<a href="/orderList">
 							<span class="img_box">
-								<img src="/img/icon55.png" alt="주문내역">
+								<img src="resources/img/icon55.png" alt="주문내역">
 							</span>
 							<span>주문내역</span>
 						</a>
@@ -84,7 +199,7 @@
 		    		<div>
 						<a href="/user/myReview" onclick="return loginCheck()" >
 							<span class="img_box">
-								<img src="/img/icon66.png" alt="리뷰관리">
+								<img src="resources/img/icon66.png" alt="리뷰관리">
 							</span>
 							<span>리뷰관리</span>
 						</a>
