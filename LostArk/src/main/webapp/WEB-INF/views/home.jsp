@@ -231,8 +231,7 @@ a:hover {
 }
 
 /* 인풋 number 화살표 업애기 */
-input[type="number"]::-webkit-outer-spin-button, 
-input[type="number"]::-webkit-inner-spin-button
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
 	{
 	-webkit-appearance: none;
 }
@@ -298,12 +297,11 @@ dl, ul, ol, li, menu {
 	list-style: none;
 }
 
-
 input:focus {
 	outline: none;
 }
 
-select{
+select {
 	appearance: none;
 	-moz-appearance: none;
 	-webkit-appearance: none;
@@ -311,8 +309,6 @@ select{
 	-webkit-border-radius: 0;
 	-moz-border-radius: 0;
 }
-
-
 
 @media ( max-width :767px) {
 	html {
@@ -336,6 +332,7 @@ select{
 		-moz-border-radius: 0;
 	}
 }
+
 header {
 	width: 100%;
 	height: 80px;
@@ -359,9 +356,7 @@ header img {
 	transform: translateY(-50%);
 }
 
-
-.menu_tab, 
-.menu_tab span {
+.menu_tab, .menu_tab span {
 	display: inline-block;
 	transition: all 0.4s;
 	box-sizing: border-box;
@@ -426,44 +421,37 @@ header img {
 	}
 }
 /* -------------  푸터 ------------- */
-
-
-
-
 footer {
-    background-color:#2AC1BC;
-    height: 130px;
-    font-size: 13px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	background-color: #2AC1BC;
+	height: 130px;
+	font-size: 13px;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 footer .box {
-	width : 1200px;
+	width: 1200px;
 	height: 80px;
 }
 
 /* -------------  푸터 ------------- */
-
-
-@media (min-width:768px) and (max-width:1023px) {
+@media ( min-width :768px) and (max-width:1023px) {
 }
-@media  (max-width:767px) {
-	footer {
-		height: 100px; 
-	}
-	
-	footer .box {
-		width : 90%;
-	}
 
+@media ( max-width :767px) {
+	footer {
+		height: 100px;
+	}
+	footer .box {
+		width: 90%;
+	}
 }
 </style>
 
 
-<%@ include file="/WEB-INF/views/include/link.jsp" %>
+<%@ include file="/WEB-INF/views/include/link.jsp"%>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 <!-- 콘텐츠 -->
 <div class="wrap">
@@ -472,16 +460,16 @@ footer .box {
 			<div id="search_box">
 				<div>
 					<input type="hidden" id="deleveryAddress1" placeholder="우편번호"
-						value="${BMaddress.address1 }" name="address1" readonly> <input
-						type="text" value="${BMaddress.address2 }" id="deleveryAddress2"
-						readonly placeholder="주소를 입력해 주세요" name="address2"><br>
+						value="${BMaddress.address1 }" name="address1" readonly> <input type="text" value="${BMaddress.address2 }"
+                             id="deleveryAddress2" readonly placeholder="주소를 입력해 주세요" name="address2"><br>
 				</div>
-		
+
 
 				<div class="search_btn">
-					<label for="search_btn"> <i class="fas fa-search"></i>
-					</label> <input type="button" name="search" id="search_btn">
-
+					<label for="search_btn">
+					 <i class="fas fa-search"></i>
+					</label> 
+					 <input type="button" name="search" id="search_btn" onclick="search_btn();">
 				</div>
 				<%@ include file="/WEB-INF/views/include/modifyAddress.jsp"%>
 			</div>

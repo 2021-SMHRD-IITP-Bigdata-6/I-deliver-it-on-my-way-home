@@ -52,6 +52,7 @@ nav ul li:nth-child(4) a {
 nav ul li:nth-child(5) a {
     background: url("resources/img/nav5.png") ;
     background-size: cover;
+    
 }
 
 nav ul li a:hover {
