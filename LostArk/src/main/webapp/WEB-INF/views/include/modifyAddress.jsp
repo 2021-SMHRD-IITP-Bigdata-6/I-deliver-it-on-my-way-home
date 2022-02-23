@@ -16,6 +16,8 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
  
 <script>
+
+
 	// 우편번호 찾기 화면을 넣을 element
 	var element_layer = document.getElementById('layer');
  
@@ -24,8 +26,10 @@
 		element_layer.style.display = 'none';
  
 	}
- 
-	function modifyAddress() {
+ 	function search_btn() {
+		console.log("버튼 클릭 완료")
+	
+	
 		new daum.Postcode(
 				{
 					oncomplete : function(data) {
@@ -109,15 +113,16 @@
  
 		// iframe을 넣은 element의 위치를 화면의 가운데로 이동시킨다.
 		initLayerPosition();
+		
 	}
  
 	// 브라우저의 크기 변경에 따라 레이어를 가운데로 이동시키고자 하실때에는
 	// resize이벤트나, orientationchange이벤트를 이용하여 값이 변경될때마다 아래 함수를 실행 시켜 주시거나,
 	// 직접 element_layer의 top,left값을 수정해 주시면 됩니다.
 	function initLayerPosition() {
-		var width = 300; //우편번호서비스가 들어갈 element의 width
-		var height = 400; //우편번호서비스가 들어갈 element의 height
-		var borderWidth = 5; //샘플에서 사용하는 border의 두께
+		var width = 400; //우편번호서비스가 들어갈 element의 width
+		var height = 500; //우편번호서비스가 들어갈 element의 height
+		var borderWidth = 1; //샘플에서 사용하는 border의 두께
  
 		// 위에서 선언한 값들을 실제 element에 넣는다.
 		element_layer.style.width = width + 'px';
@@ -129,22 +134,6 @@
 		element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height) / 2 - borderWidth)
 				+ 'px';
 	}
-	// 추가
-	console.log("data.zonecode = " + data.zonecode);
-	console.log("addr = " + addr);
-							
-	$.ajax({
-	    url: "/addressModify",
-	    data: {address1 : data.zonecode , address2 : addr},
-	    type: "post"
-	})
-	.done(function(){
-	    $(".address1").text(addr);
-		address1 = data.zonecode;
-	})
-	.fail(function(){
-	    alert("실패");
-	})
-	// 추가
-	
+ 	
+
 </script>
