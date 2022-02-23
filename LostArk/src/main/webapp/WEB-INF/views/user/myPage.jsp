@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/view/include/link.jsp" %>
+<%@ include file="/WEB-INF/views/include/link.jsp" %>
 <link rel="stylesheet" href="/css/layout/nav.css">
 <link rel="stylesheet" href="/css/user/myPage.css">
  
-<%@ include file="/WEB-INF/view/include/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
  
 	<div class="wrap"> 
  
@@ -101,11 +101,11 @@
  
  
     <!-- 하단 메뉴 -->
-	<%@ include file="/WEB-INF/view/include/nav.jsp" %>
+	<%@ include file="/WEB-INF/views/include/nav.jsp" %>
     <!-- 하단 메뉴 -->
  
     <!-- 푸터 -->
-    <%@ include file="/WEB-INF/view/include/footer.jsp" %>
+    <%@ include file="/WEB-INF/views/include/footer.jsp" %>
     <!-- 푸터 -->
  
     <script type="text/javascript">
