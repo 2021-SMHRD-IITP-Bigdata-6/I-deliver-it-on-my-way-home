@@ -116,7 +116,7 @@ header .admin_page_btn a {
 
 	<header>
 		<div id="header">
-			<a href="/"><img src="resources/img/baemin.jpg" alt="이미지"> </a>
+			<a href="/"><img src="resources/img/dadem.png" alt="이미지" height="80px" width="50px"> </a>
 
 			<c:if test="${SPRING_SECURITY_CONTEXT != null }">
 				로그인중			
