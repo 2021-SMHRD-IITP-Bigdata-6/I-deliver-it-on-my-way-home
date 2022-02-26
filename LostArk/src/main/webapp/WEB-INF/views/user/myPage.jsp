@@ -134,7 +134,7 @@ main .container .grid_box > div img {
 		    	<div class="grid_box">
 		    		<div class="login_box">
 	    				 <c:if test="${empty SPRING_SECURITY_CONTEXT }">
-	                         <a href="/login"><span>로그인을 해주세요</span></a>
+	                         <a href="login"><span>로그인을 해주세요</span></a>
 	                    </c:if>
 	                    
 	                    

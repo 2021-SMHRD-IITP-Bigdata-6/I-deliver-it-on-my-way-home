@@ -470,8 +470,8 @@ footer .box {
 					 <i class="fas fa-search"></i>
 					</label> 
 					 <input type="button" name="search" id="search_btn" onclick="search_btn();">
-				</div>
 				<%@ include file="/WEB-INF/views/include/modifyAddress.jsp"%>
+				</div>
 			</div>
 		</section>
 		<section class="category_box">

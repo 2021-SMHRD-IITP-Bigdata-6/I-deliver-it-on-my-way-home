@@ -80,7 +80,7 @@
 						console.log("data.zonecode = " + data.zonecode);
 						console.log("addr = " + addr);
 						
-						$.ajax({
+						/* $.ajax({
 							url: "/addressModify",
 							data: {address1 : data.zonecode , address2 : addr},
 							type: "post",
@@ -91,7 +91,7 @@
 							fail: function(){
 								alert("실패");
 							}
-						})
+						}) */
 						// 추가
 						
 						// 커서를 상세주소 필드로 이동한다.

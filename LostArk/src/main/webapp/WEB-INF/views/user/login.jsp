@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<style>
+<style>
 main {
 	width: 70%;
 	margin: 40px auto;
@@ -219,7 +219,7 @@ input[type="checkbox"]:checked ~ i{
 				</div>
 			</div>
 			
-			<div class="join"><a href="/join" >회원 가입하러 가기</a></div>
+			<div class="join"><a href="join" >회원 가입하러 가기</a></div>
         </div>
     </main>
     

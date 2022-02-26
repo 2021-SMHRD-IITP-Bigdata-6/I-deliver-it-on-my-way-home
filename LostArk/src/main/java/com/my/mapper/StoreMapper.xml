@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<mapper namespace="store"> 
+	<select id="storeList" resultType="Store">
+		SELECT * FROM BM_STORE
+	</select>	
+	
+</mapper>
