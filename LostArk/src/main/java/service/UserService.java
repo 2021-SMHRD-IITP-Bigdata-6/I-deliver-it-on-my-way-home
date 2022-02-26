@@ -1,10 +1,9 @@
 package service;
 
-import com.my.dto.memberDTO.Join;
+import com.my.dto.memberDTO.Member;
 
 public interface UserService {
-	static void join(Join join) {
-		// TODO Auto-generated method stub
+	static void join(Member join) {
 		
 	}
  

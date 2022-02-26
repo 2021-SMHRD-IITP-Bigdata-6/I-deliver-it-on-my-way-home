@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.my.dto.memberDAO.UserDAO;
-import com.my.dto.memberDTO.Join;
+import com.my.dto.memberDTO.Member;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -12,7 +12,7 @@ public class UserServiceImp implements UserService {
 	@Autowired
 	private UserDAO userDAO;
 	
-	public void join(Join join) {
+	public void join(Member join) {
 		userDAO.join(join);
 	}
 	
