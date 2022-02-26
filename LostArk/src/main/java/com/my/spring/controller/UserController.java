@@ -18,4 +18,8 @@ public class UserController {
 	public String login() {
 		return "user/login";
 	}
+	@GetMapping("/join")
+	public String Member() {
+		return "user/join";
+	}
 }

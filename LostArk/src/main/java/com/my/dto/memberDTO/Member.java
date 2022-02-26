@@ -2,7 +2,15 @@ package com.my.dto.memberDTO;
 import lombok.*;
 import java.util.List;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import javax.validation.constraints.Pattern;
+
+@Getter
+@Setter
+@ToString
 
 @Data
 public class Member {

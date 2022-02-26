@@ -5,13 +5,13 @@
 <mapper namespace="user">
  
 	<select id="overlapCheck" resultType="int">
-		SELECT COUNT(*) FROM BM_USER WHERE ${valueType } = #{value }
+		SELECT COUNT(*) FROM T_MEMBER WHERE ${valueType } = #{value }
 	</select>
 	
 	
 	
 	<insert id="join">
-		INSERT INTO BM_USER (
+		INSERT INTO T_MEMBER (
 			ID,
 			PW,
 			NAME,
