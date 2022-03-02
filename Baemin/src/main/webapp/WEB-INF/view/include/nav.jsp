@@ -6,6 +6,6 @@
         <li><a href="/store/search"></a></li>
         <li><a href="/likes/store"></a></li>
         <li><a href="/orderList"></a></li>
-        <li><a href="/myPage"></a></li>
+        <li><a href="/Mypage"></a></li>
     </ul>
 </nav>
