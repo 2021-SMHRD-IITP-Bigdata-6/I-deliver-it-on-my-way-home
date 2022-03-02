@@ -38,7 +38,15 @@ public class UserController {
 	public String Join() {
 		return "user/Join";
 	}
-	
+	// 윤서가추가함.
+	@PostMapping("/join")
+	public String joinProc(Join join) {
+		
+		System.out.println(join);
+		
+		return "redirect:/login";
+	}
+
 
 	
 	
