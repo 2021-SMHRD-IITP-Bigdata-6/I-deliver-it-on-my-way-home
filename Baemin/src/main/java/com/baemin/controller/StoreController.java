@@ -12,7 +12,7 @@ import com.baemin.dao.Store;
 import com.baemin.inter.StoreService;
 
 @Controller
-public class StoreCon {
+public class StoreController {
  
 	@Autowired
 	private StoreService storeService;
