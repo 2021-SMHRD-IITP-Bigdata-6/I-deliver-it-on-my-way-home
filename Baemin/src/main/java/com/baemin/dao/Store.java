@@ -1,4 +1,4 @@
-package com.baemin.DAO;
+package com.baemin.dao;
 
 import lombok.Getter;
 import lombok.Setter;

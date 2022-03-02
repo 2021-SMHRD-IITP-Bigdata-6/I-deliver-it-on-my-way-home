@@ -1,4 +1,4 @@
-package com.baemin.Service;
+package com.baemin.service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.baemin.DAO.Store;
+import com.baemin.dao.Store;
 import com.baemin.inter.StoreDAO;
 import com.baemin.inter.StoreService;
 
