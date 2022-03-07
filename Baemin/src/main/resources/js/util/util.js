@@ -18,9 +18,9 @@ function emailCheck(email){
    }
 }
  
-function phoneCheck(콜){
+function phoneCheck(phone ){
    const regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-   if(regPhone.test(콜)) {
+   if(regPhone.test(phone )) {
       return true;
    } else {
       return false;
