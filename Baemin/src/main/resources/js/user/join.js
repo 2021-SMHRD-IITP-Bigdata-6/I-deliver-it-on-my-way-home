@@ -5,7 +5,7 @@ const isSubmit = (function(){
 	let usernameCheck = false;
 	let passwordCheck = false;
 	let emailCheck = false;
-	let nicknameCheck = false;
+	let usernameCheck = false;
 	let phoneCheck = false;
 	
 	const setUsernameCheck = function(set){
@@ -54,7 +54,7 @@ const isSubmit = (function(){
  
  
 function overlapCheck(data) {
-	/*
+	
 	let isUseable = false;
 	$.ajax({
 		url: "/overlapCheck",
@@ -72,7 +72,7 @@ function overlapCheck(data) {
 	});
 	
 	return isUseable;
-	*/
+	
 }
  
  

@@ -1,7 +1,7 @@
-function usernameCheck(username) {
+function mem_idCheck(mem_id) {
 	const regUsername =  /^[A-Za-z0-9]{4,15}$/;
 	
-	if(regUsername.test(username)) {
+	if(regUsername.test(mem_id)) {
 		return true;
 	} else {
 		return false;

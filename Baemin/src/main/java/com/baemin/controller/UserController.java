@@ -13,6 +13,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.baemin.dto.Join;
@@ -34,35 +36,50 @@ public class UserController {
 	public String login() {
 		return "user/login";
 	}
-	@GetMapping("/Join")
-	public String Join() {
-		return "user/Join";
-	}
+//	@RequestMapping(value="/Join")
+//	public String Join() {
+//		return "user/Join";
+//	}
 	// 윤서가추가함.
-	@PostMapping("/join")
-	public String joinProc(Join join) {
+	// 정곤 추가부분 RequestMapping
+	@RequestMapping(value="/Join", method = {RequestMethod.GET, RequestMethod.POST})
+	public String joinProc(@Valid Join join, BindingResult bindingResult, Model model) {
+		if(bindingResult.hasErrors()) {
+			List<FieldError> list = bindingResult.getFieldErrors();
+			Map<String, String> errorMsg = new HashMap<>();
+			for(int i=0;i<list.size();i++) {
+				String field = list.get(i).getField(); 
+				String message = list.get(i).getDefaultMessage(); 
+				errorMsg.put(field, message);
+			}
+			model.addAttribute("errorMsg", errorMsg);
+			return "user/join";
+		}
 		
-		System.out.println(join);
+		userService.join(join);
 		
 		return "redirect:/login";
 	}
+	
 
+		
 
+		
 	
 	
 	
-//	@ResponseBody
-//	@GetMapping("/overlapCheck")
-//	public int overlapCheck(String value, String valueType) {
-////		value = 중복체크할 값
-////		valeuType = username, nickname
-//		System.out.println(value);
-//		System.out.println(valueType);
-//		int count = userService.overlapCheck(value, valueType);
-//		
-//		System.out.println(count);
-//		return count;
-//	}
+	@ResponseBody
+	@GetMapping("/overlapCheck")
+	public int overlapCheck(String value, String valueType) {
+//		value = 중복체크할 값
+//		valeuType = username, nickname
+		System.out.println(value);
+		System.out.println(valueType);
+		int count = userService.overlapCheck(value, valueType);
+		
+		System.out.println(count);
+		return count;
+	}
 
 }
 
