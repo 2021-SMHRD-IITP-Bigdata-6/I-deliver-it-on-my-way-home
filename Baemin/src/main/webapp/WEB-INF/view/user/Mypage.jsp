@@ -42,7 +42,7 @@
 		    		
 		    		
 		    		<div>
-		    			<a class="updating" href="/myPage/coupon" onclick="return false;">
+		    			<a class="updating" href="/Mypage/coupon" onclick="return false;">
 	               		  	<span class="img_box">
 	                			<img src="/img/icon22.png" alt="쿠폰함">
 	               			</span>
@@ -52,7 +52,7 @@
 		    		
 		    		
 		    		<div>
-		    			<a class="updating" href="/myPage/gift" onclick="return false;">
+		    			<a class="updating" href="/Mypage/gift" onclick="return false;">
 	                 		<span class="img_box">
 	                 			<img src="/img/icon33.png" alt="선물함">
 	                 		</span>

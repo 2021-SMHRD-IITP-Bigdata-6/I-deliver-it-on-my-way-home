@@ -47,7 +47,7 @@
 				</div>
 			</div>
 			
-			<div class="join"><a href="/Join" >회원 가입하러 가기</a></div>
+			<div class="join"><a href="Join" >회원 가입하러 가기</a></div>
         </div>
     </main>
     
