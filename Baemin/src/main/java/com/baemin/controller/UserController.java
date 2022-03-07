@@ -13,6 +13,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.baemin.dto.Join;
@@ -21,8 +23,9 @@ import com.baemin.service.UserService;
 @Controller
 public class UserController {
 	
-	@Autowired
-	private UserService userService;
+	/*
+	 * @Autowired private UserService userService;
+	 */
 
 	
 	@GetMapping("/Mypage")
@@ -34,18 +37,21 @@ public class UserController {
 	public String login() {
 		return "user/login";
 	}
-	@GetMapping("/Join")
-	public String Join() {
-		return "user/Join";
-	}
+
 	// 윤서가추가함.
-	@PostMapping("/join")
+	@RequestMapping(value="/Join", method=RequestMethod.GET)
 	public String joinProc(Join join) {
 		
 		System.out.println(join);
+		System.out.println("test");
+
 		
-		return "redirect:/login";
+		
+		return "user/Join";
 	}
+
+
+
 
 
 	
