@@ -56,6 +56,10 @@
                 	<c:forEach items="${storeList}" var="storeList">
                     	<%@ include file="/WEB-INF/view/store/store-li.jsp" %>
                     </c:forEach>
+                    <script>
+                        console.log("스토어리스트 동작")
+                        console.log("${storeList}")
+                    </script>
                 </ul>
             </div>
 

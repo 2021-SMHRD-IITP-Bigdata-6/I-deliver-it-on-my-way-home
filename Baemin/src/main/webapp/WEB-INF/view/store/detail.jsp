@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/include/link.jsp"%>
 
+
+<script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxff49e6125e3442c69b6be1a8ff76c7ae"></script>
 <link rel="stylesheet" href="/css/modal.css">
 <link rel="stylesheet" href="/css/store/detail.css">
 

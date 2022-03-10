@@ -7,7 +7,7 @@
 <body>
     <main>
         <div class="login_box">
-			<a href="/"><img src="/img/bamin2.png" alt="이미지" class="bm_img"></a>    
+			<a href="/"><img src="/img/로긴페이지1-001.png" alt="이미지" class="bm_img"></a>    
             
             <form action="/login" method="post">
  

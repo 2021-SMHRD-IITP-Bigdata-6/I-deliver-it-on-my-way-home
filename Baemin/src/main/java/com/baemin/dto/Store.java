@@ -8,20 +8,20 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Store {
-	private int store_id;
+	private int id;
 	private int category;
-	private String store_name;
+	private String storename;
 	private int storeaddress1;
-	private String store_address2;
-	private String store_address3;
-	private String store_phone;
-	private String store_img;
-	private String store_thumb;
-	private int opening_time;
-	private int closing_time;
-	private int min_delevery;
-	private int delevery_time;
-	private int delevery_tip;
-	private String store_des;
+	private String storeaddress2;
+	private String storeaddress3;
+	private String storephone;
+	private String storeimg;
+	private String storethumb;
+	private int openingtime;
+	private int closingtime;
+	private int mindelevery;
+	private int deleverytime;
+	private int deleverytip;
+	private String storedes;
 }
 
