@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.baemin.dto.Store;
+import com.baemin.dto.StoreDetail;
 import com.baemin.inter.StoreService;
 
 @Controller
@@ -61,4 +62,14 @@ public class StoreController {
 		session.setMaxInactiveInterval(3600 * 3); // 3시간
 		session.setAttribute("BMaddress", addMap);
 	}
+	@GetMapping("/store/detail/{id}")
+	public String storeDetail(@PathVariable int id, Model model) {
+ 
+		StoreDetail storeDetail = storeService.storeDetail(id);
+ 
+		model.addAttribute("store", storeDetail);
+ 
+		return "store/detail";
+	}
+
 }

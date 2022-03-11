@@ -9,7 +9,7 @@
 	<div class="wrap"> 
  
 	    <section class="title">
-	        <h1>my 배민</h1> 
+	        <h1>my 배달</h1> 
 	    </section>
 			
 	    <!-- 콘텐츠 -->
