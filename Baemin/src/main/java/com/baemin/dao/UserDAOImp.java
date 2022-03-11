@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.baemin.dto.Join;
+import com.baemin.dto.join;
 
 @Repository
 public class UserDAOImp implements UserDAO {
@@ -16,7 +16,7 @@ public class UserDAOImp implements UserDAO {
 	private SqlSession sql;
 	
 	@Override
-	public void join(Join join) {
+	public void join(join join) {
 		sql.insert("user.join" , join);	
 	}
 	

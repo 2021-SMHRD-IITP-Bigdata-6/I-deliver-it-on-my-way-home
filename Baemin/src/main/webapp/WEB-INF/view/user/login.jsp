@@ -9,12 +9,12 @@
         <div class="login_box">
 			<a href="/"><img src="/img/bamin2.png" alt="이미지" class="bm_img"></a>    
             
-            <form action="/login" method="post">
+            <form action="/login" method="get">
  
 	            <div class="input_aera"><input type="text" name="username"  value="" required placeholder="이메일을 입력해 주세요" maxlength="30" ></div>
 	            <div class="input_aera"><input type="password" name="password" value="" required placeholder="비밀번호를 입력해 주세요" maxlength="30"></div>
  
-				<input type="submit" value="로그인" class="login_btn" >
+				<a href=""><input type="submit" value="로그인" class="login_btn" ></a>
             
 				<div class="box">
 					<div class="continue_login">
@@ -46,8 +46,9 @@
 					<a href="/oauth2/authorization/google"></a>
 				</div>
 			</div>
-			
-			<div class="join"><a href="Join" >회원 가입하러 가기</a></div>
+			<div><a href ="http://localhost:8081/Mypage">Mypage.jsp로이동</a></div>
+			<div><a href ="http://localhost:8081/join">join.jsp로이동</a></div>
+			<div class="join"><a href="/join" >회원 가입하러 가기</a></div>
         </div>
     </main>
     

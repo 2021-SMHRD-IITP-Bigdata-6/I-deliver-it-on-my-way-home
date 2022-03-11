@@ -1,9 +1,11 @@
 package com.baemin.service;
 
-import com.baemin.dto.Join;
+import com.baemin.dto.join;
 
 public interface UserService {
-	void join(Join join);
- 
+	void join(join join);
+	 
 	int overlapCheck(String value, String valueType);
 }
+
+
