@@ -272,8 +272,8 @@
 			marker_s = new Tmapv2.Marker({
 				 
 				position : new Tmapv2.LatLng(35.14106109876024, 126.92714737171818),
-				icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png",
-				iconSize : new Tmapv2.Size(24, 38),
+				icon : "https://cdn1.iconfinder.com/data/icons/human-person-user-profile-business-avatars/100/25-1User-6-256.png" ,
+				iconSize : new Tmapv2.Size(32, 38),
 				map:map
 			});
 			
@@ -281,16 +281,16 @@
 			marker_e = new Tmapv2.Marker({
 				
 				position : new Tmapv2.LatLng(35.141761287215914, 126.93182619326623),
-				icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png",
-				iconSize : new Tmapv2.Size(24, 38),
+				icon : "https://cdn2.iconfinder.com/data/icons/navigation-86/100/290-128.png",
+				iconSize : new Tmapv2.Size(34, 38),
 				map:map
 			});
 			// 경유지 [ 가게 좌표 적기]
 			marker = new Tmapv2.Marker({
 				
 				position : new Tmapv2.LatLng(35.13942237224968, 126.93085810192048),
-				icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_1.png",
-				iconSize : new Tmapv2.Size(24, 38),
+				icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/market-128.png",
+				iconSize : new Tmapv2.Size(32, 38),
 				map:map
 			});
 			
