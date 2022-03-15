@@ -272,7 +272,7 @@
 			marker_s = new Tmapv2.Marker({
 				 
 				position : new Tmapv2.LatLng(35.14106109876024, 126.92714737171818),
-				icon : "https://cdn1.iconfinder.com/data/icons/human-person-user-profile-business-avatars/100/25-1User-6-256.png" ,
+				icon : "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/red_b.png" ,
 				iconSize : new Tmapv2.Size(32, 38),
 				map:map
 			});
@@ -281,7 +281,7 @@
 			marker_e = new Tmapv2.Marker({
 				
 				position : new Tmapv2.LatLng(35.141761287215914, 126.93182619326623),
-				icon : "https://cdn2.iconfinder.com/data/icons/navigation-86/100/290-128.png",
+				icon : "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/blue_drag.png",
 				iconSize : new Tmapv2.Size(34, 38),
 				map:map
 			});

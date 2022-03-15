@@ -12,10 +12,16 @@ public class MainController {
         return "home";
     }
     
+    @GetMapping("/Testpage")
+    public String MyPage() {
+       return "user/Testpage";
+    }
     
     
-    
-	
+    @GetMapping("/Customer1")
+    public String MyPage1() {
+       return "user/Customer1";
+    }
 	
 
 }

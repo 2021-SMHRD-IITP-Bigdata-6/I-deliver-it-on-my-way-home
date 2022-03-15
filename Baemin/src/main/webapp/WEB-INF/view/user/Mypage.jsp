@@ -62,21 +62,21 @@
 		    		
 		    		
 		    		<div>
-						<a href="/likes/store">
+						<a href="Customer1">
 							<span class="img_box">
 								<img src="/img/icon44.png" alt="찜한가게">
 							</span>
-							<span>찜한가게</span>
+							<span>구매자첫페이지</span>
 						</a>
 		    		</div>
 		    		
 		    		
 		    		<div>
-						<a href="/orderList">
+						<a href="Testpage">
 							<span class="img_box">
 								<img src="/img/icon55.png" alt="주문내역">
 							</span>
-							<span>주문내역</span>
+							<span>구매자두번째페이지</span>
 						</a>
 		    		</div>
 		    		
