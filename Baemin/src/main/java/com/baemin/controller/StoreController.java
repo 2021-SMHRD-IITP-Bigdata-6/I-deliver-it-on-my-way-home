@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.baemin.dto.FoodOption;
 import com.baemin.dto.Store;
 import com.baemin.dto.StoreDetail;
 import com.baemin.inter.StoreService;
@@ -71,5 +72,13 @@ public class StoreController {
  
 		return "store/detail";
 	}
+	// 메뉴 클릭시 음식 추가옵션 가져요기
+	@ResponseBody
+	@GetMapping("/foodOption")
+	public List<FoodOption> menuDetail(int foodId) {
+		List<FoodOption> foodOption = storeService.foodOption(foodId);
+		return foodOption;
+	}
+
 
 }

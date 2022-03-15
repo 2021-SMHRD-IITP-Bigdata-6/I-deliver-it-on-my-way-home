@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.baemin.dto.Food;
+import com.baemin.dto.FoodOption;
 import com.baemin.dto.Store;
 import com.baemin.inter.StoreDAO;
 
@@ -31,5 +32,10 @@ public class StoreDAOImp implements StoreDAO {
 	public List<Food> foodList(int id) {
 		return sql.selectList("store.foodList", id);
 	}
+	@Override
+	public List<FoodOption> foodOption(int foodId) {
+		return sql.selectList("store.foodOption", foodId);
+	}
+
 
 }

@@ -10,6 +10,6 @@
 	
 	<insert id="join">
 	INSERT INTO t_member (mem_id, mem_pw, mem_name, mem_gender, mem_phone, mem_addr, mem_joindate, delivery_yn, admin_yn) 
-	VALUES ('123',#{mem_pw},#{mem_name},#{mem_gender},#{mem_phone},#{mem_addr}, NOW(), 'N', 'N');	
+	VALUES (#{mem_id},#{mem_pw},#{mem_name},#{mem_gender},#{mem_phone},#{mem_addr}, NOW(), 'N', 'N');	
 	</insert>
 </mapper>

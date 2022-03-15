@@ -8,7 +8,7 @@
    <main>
       <div class="login_box">
            <a href="/"><img src="/img/bamin2.png" alt="이미지" class="bm_img"></a>
-            <form action="/join" method="post" >
+            <form action="/join1" method="post" >
                <div class="input_aera">
                      <input type="text" name="mem_id" id="mem_id" class="mem_id" maxlength="20"  placeholder="아이디를 입력해 주세요" >
                   <span class="msg_box">${errorMsg.username }</span>

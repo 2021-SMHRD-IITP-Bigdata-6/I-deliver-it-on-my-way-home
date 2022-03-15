@@ -38,6 +38,11 @@ public class UserController {
    public String login() {
       return "user/login";
    }
+   
+   @GetMapping("/join2")
+   public String join() {
+      return "user/join2";
+   }
   /* @RequestMapping(value="Join", method= {RequestMethod.GET, RequestMethod.POST})
 	public String joinProc(Join join) {
 		
@@ -56,7 +61,7 @@ public class UserController {
 //	   return "user/Join";
 //   }
    
-   @RequestMapping("/join")
+   @RequestMapping("/join1")
 	public String join(@Valid join join, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
 			List<FieldError> list = bindingResult.getFieldErrors();
@@ -67,7 +72,7 @@ public class UserController {
 				errorMsg.put(field, message);
 			}
 			model.addAttribute("errorMsg", errorMsg);
-			return "user/join";
+			return "user/join2";
 		}
 		
 		userService.join(join);

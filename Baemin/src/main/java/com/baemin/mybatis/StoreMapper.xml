@@ -27,4 +27,16 @@
 			STORE_ID = #{id }    
 	</select>
 
+	<select id="foodOption" resultType="FoodOption">
+		SELECT
+		    id,
+		    food_id,
+		    option_name,
+		    option_price
+		FROM
+		    bm_food_option
+		WHERE
+			food_id = #{foodId }    
+	</select>
+
 </mapper>
