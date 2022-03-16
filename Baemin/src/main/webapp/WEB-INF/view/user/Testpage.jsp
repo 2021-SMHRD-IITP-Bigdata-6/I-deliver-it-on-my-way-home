@@ -10,6 +10,7 @@
     request.setCharacterEncoding("UTF-8");
     String drag = request.getParameter("drag");
 %>
+<script>var darg = <%=darg%></script>
  <style>
     
     .div_con{
@@ -38,7 +39,9 @@
          >
         
             <h2 align = center style="padding-top: 5px;">우선추천</h2>
-        <h2><%=drag%></h2>
+        <script>
+            document.write(drag );
+        </script>
         
         </div> 
         
@@ -47,7 +50,7 @@
     
     
     
-    
+   
     </div>
     
 
@@ -57,6 +60,7 @@
    
 
 </body>
+
 <script type="text/javascript">
 
     var map;
@@ -142,7 +146,7 @@
             iconSize : new Tmapv2.Size(24, 38),
             map:map
         }); */
-        
+       
         var headers = {}; 
         headers["appKey"]="l7xxe41992d069424d6187555c04c65bce2e";
         

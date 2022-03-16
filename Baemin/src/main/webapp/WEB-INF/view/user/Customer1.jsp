@@ -67,7 +67,7 @@
 <body>
     
     <div class="div_con">
-        <div id="map_div"  class="div_box" >
+        < id="map_div"  class="div_box" >
         <div style="position: absolute;
         background-color: aliceblue;
         z-index:10;
@@ -99,10 +99,10 @@
         display:table-cell;
         vertical-align:middle;">
         <div style="margin-top: 27px;"><a href="Testpage?drag='drag'" ><h1>픽업지 선택</h1></a></div>
+        
 
         
        
-       <h1> </h1>
 
         
 
