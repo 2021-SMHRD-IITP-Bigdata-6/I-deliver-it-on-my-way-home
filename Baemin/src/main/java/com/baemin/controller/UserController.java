@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +16,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.baemin.dto.User;
 import com.baemin.dto.join;
+import com.baemin.service.MemberService;
 import com.baemin.service.UserService;
 
 @Controller
@@ -34,10 +39,7 @@ public class UserController {
       return "user/Mypage";
    }
    
-   @GetMapping("/login")
-   public String login() {
-      return "user/login";
-   }
+  
    
    @GetMapping("/join2")
    public String join() {
@@ -94,6 +96,39 @@ public class UserController {
       System.out.println(count);
       return count;
    }
+   @Autowired
+   private MemberService memberService;
+   
+  @RequestMapping("/login")
+   public String login() {
+    return "user/login";
+  }
 
+  @RequestMapping("/login_check")
+  public ModelAndView login_check(@ModelAttribute User user, HttpSession session) {
+   String mem_name = memberService.loginCheck(user, session);  
+   
+   ModelAndView mav = new ModelAndView();
+    if (mem_name != null) { // 로그인 성공 시
+     mav.setViewName("user/Mypage"); // 뷰의 이름
+     System.out.println("여기");
+     } else { // 로그인 실패 시
+       mav.setViewName("user/login"); 
+       mav.addObject("message", "error");
+       System.out.println("실패");
+       }
+       return mav;
+     }
+     
+
+
+
+@RequestMapping("logout.do")
+  public ModelAndView logout(HttpSession session, ModelAndView mav) {
+  memberService.logout(session); 
+   mav.setViewName("user/login"); 
+   mav.addObject("message", "logout"); 
+    return mav;
+    }
    
 }

@@ -61,7 +61,7 @@
 				{ // 
 					position : new Tmapv2.LatLng(35.140795058034456, 126.92676796851033),
 					icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png",
-					iconSize : new Tmapv2.Size(24, 38),
+					iconSize : new Tmapv2.Size(36, 48),
 					map : map,
 					title : "배달자"
 
@@ -71,7 +71,7 @@
 				{
 					position : new Tmapv2.LatLng(strArray1[1],strArray[2]),
 					icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png",
-					iconSize : new Tmapv2.Size(24, 38),
+					iconSize : new Tmapv2.Size(36, 48),
 					map : map,
 					title : "도착지점"
 				});
@@ -96,7 +96,7 @@
 		position: new Tmapv2.LatLng(35.14120740675808, 126.92427887863883), //Marker의 중심좌표 설정.
 		map: map, //Marker가 표시될 Map 설정..
 		title: 'GS25 조선공대점',
-         icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/market-128.png",
+         icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/supermarket-128.png",
         iconSize : new Tmapv2.Size(42, 42) 
 	});
 	
@@ -150,7 +150,7 @@
 		position: new Tmapv2.LatLng(35.13871864586712, 126.9274562217457), //Marker의 중심좌표 설정.
 		map: map, //Marker가 표시될 Map 설정..
 		title: '미니스톱 조선대 병원본관점',
-         icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/market-128.png",
+         icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/supermarket-128.png",
         iconSize : new Tmapv2.Size(42, 42) 
 	});
 	var marker1 = new Tmapv2.Marker({
