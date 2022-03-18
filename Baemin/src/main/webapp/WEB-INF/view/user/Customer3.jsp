@@ -59,7 +59,7 @@
 		// 시작
 		marker_s = new Tmapv2.Marker(
 				{ // 
-					position : new Tmapv2.LatLng(35.140795058034456, 126.92676796851033),
+					position : new Tmapv2.LatLng(strArray[0],strArray1[0]),
 					icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png",
 					iconSize : new Tmapv2.Size(24, 38),
 					map : map,
