@@ -10,7 +10,7 @@
     request.setCharacterEncoding("UTF-8");
     String drag = request.getParameter("drag");
 %>
-<script>var darg = <%=darg%></script>
+
  <style>
     
     .div_con{
@@ -38,10 +38,10 @@
          
          >
         
-            <h2 align = center style="padding-top: 5px;">우선추천</h2>
-        <script>
-            document.write(drag );
-        </script>
+            <h2 align = center style="padding-top: 5px;">우선추천
+
+               </h2>
+     
         
         </div> 
         
@@ -62,7 +62,12 @@
 </body>
 
 <script type="text/javascript">
-
+  //16r개?
+   var drag = "<%=drag%>";
+   var strArray=drag.split(',');
+   console.log(strArray[0]);
+   console.log(strArray[1]);
+   console.log(drag);
     var map;
     var marker_s, marekr_e;
     
@@ -76,7 +81,7 @@
         // 1. 지도 띄우기
         map = new Tmapv2.Map("map_div", {
             
-            center: new Tmapv2.LatLng(35.14174980544471, 126.92841873882824),
+            center: new Tmapv2.LatLng(strArray[0], strArray[1]),
             width : "100%",
             height : "100%",
             zoom : 16,
@@ -105,47 +110,14 @@
         // 경유지 [ 가게 좌표 적기]
         marker = new Tmapv2.Marker({
             
-            position : new Tmapv2.LatLng(35.13942237224968, 126.93085810192048),
+            position : new Tmapv2.LatLng(strArray[0],strArray[1]),
             icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/market-128.png",
-            iconSize : new Tmapv2.Size(50, 64),
+            iconSize : new Tmapv2.Size(42, 42),
             map:map
             
         });
        
-        /* marker = new Tmapv2.Marker({
-            position : new Tmapv2.LatLng(37.56568310756034, 127.00221495976581),
-            icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_2.png",
-            iconSize : new Tmapv2.Size(24, 38),
-            map:map
-        });
         
-        marker = new Tmapv2.Marker({
-            position : new Tmapv2.LatLng(37.570369, 126.992153),
-            icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_3.png",
-            iconSize : new Tmapv2.Size(24, 38),
-            map:map
-        });
-        
-        marker = new Tmapv2.Marker({
-            position : new Tmapv2.LatLng(37.56335290252303, 127.00352387777271),
-            icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_4.png",
-            iconSize : new Tmapv2.Size(24, 38),
-            map:map
-        });
-        
-        marker = new Tmapv2.Marker({
-            position : new Tmapv2.LatLng(37.570721714117965, 127.00186090818215),
-            icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_5.png",
-            iconSize : new Tmapv2.Size(24, 38),
-            map:map
-        });
-        
-        marker = new Tmapv2.Marker({
-            position : new Tmapv2.LatLng(37.56515390827723, 126.99066536776698),
-            icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_6.png",
-            iconSize : new Tmapv2.Size(24, 38),
-            map:map
-        }); */
        
         var headers = {}; 
         headers["appKey"]="l7xxe41992d069424d6187555c04c65bce2e";
@@ -159,15 +131,16 @@
             data: JSON.stringify({
                       "reqCoordType": "WGS84GEO",
                       "resCoordType" : "EPSG3857",
+
                       "startName": "출발",
-                      
                       "startX": "126.92714737171818",
                       "startY": "35.14106109876024",
                       "startTime": "201711121314",
-                      "endName": "도착",
-                      
+
+                      "endName": "도착",        
                       "endX": "126.93182619326623",
                       "endY": "35.141761287215914",
+                      
                       "searchOption" : "0",
                       "viaPoints": [
                          {
@@ -175,39 +148,9 @@
                             "viaPointId": "test01",
                             "viaPointName": "test01",
                             
-                            "viaX": "126.93085810192048",
-                            "viaY": "35.13942237224968",
-                         }/* ,
-                         {
-                            "viaPointId": "test02",
-                            "viaPointName": "test02",
-                            "viaX": "127.00221495976581",
-                            "viaY": "37.56568310756034",
-                         },
-                         {
-                            "viaPointId": "test03",
-                            "viaPointName": "test03",
-                            "viaX": "126.992153",
-                            "viaY": "37.570369",
-                         },
-                         {
-                            "viaPointId": "test04",
-                            "viaPointName": "test04",
-                            "viaX": "127.00352387777271",
-                            "viaY": "37.56335290252303",
-                         },
-                         {
-                            "viaPointId": "test05",
-                            "viaPointName": "test05",
-                            "viaX": "127.00186090818215",
-                            "viaY": "37.570721714117965",
-                         },
-                         {
-                            "viaPointId": "test06",
-                            "viaPointName": "test06",
-                            "viaX": "126.99066536776698", 
-                            "viaY": "37.56515390827723",
-                         } */
+                            "viaX": strArray[1],
+                            "viaY": strArray[0],
+                         }
                       ]
             }),
             success:function(response){

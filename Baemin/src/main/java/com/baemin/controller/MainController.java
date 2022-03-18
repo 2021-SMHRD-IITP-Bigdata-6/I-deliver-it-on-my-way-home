@@ -22,6 +22,16 @@ public class MainController {
     public String MyPage1() {
        return "user/Customer1";
     }
+    
+    @GetMapping("/Customer2")
+    public String MyPage2() {
+       return "user/Customer2";
+    }
+    @GetMapping("/Customer3")
+    public String MyPage3() {
+       return "user/Customer3";
+    }
+	
 	
 
 }
