@@ -31,34 +31,12 @@
                        </c:if>
                 </div>
                 
-                <div>
-                   <a href="/user/point" onclick="return loginCheck();">
-                             <span class="img_box">
-                                <img src="/img/icon11.png" alt="포인트">
-                             </span>
-                             <span>포인트</span>
-                        </a>
-                </div>
                 
                 
-                <div>
-                   <a class="updating" href="/Mypage/coupon" onclick="return false;">
-                             <span class="img_box">
-                            <img src="/img/icon22.png" alt="쿠폰함">
-                           </span>
-                           <span>쿠폰함</span>
-                       </a>
-                </div>
                 
                 
-                <div>
-                   <a class="updating" href="/Mypage/gift" onclick="return false;">
-                          <span class="img_box">
-                             <img src="/img/icon33.png" alt="선물함">
-                          </span>
-                           <span>선물함</span>
-                  </a>
-                </div>
+                
+                
                 
                 
                 <div>
@@ -81,14 +59,7 @@
                 </div>
                 
                 
-                <div>
-                  <a href="/user/myReview" onclick="return loginCheck()" >
-                     <span class="img_box">
-                        <img src="/img/icon66.png" alt="리뷰관리">
-                     </span>
-                     <span>리뷰관리</span>
-                  </a>
-                </div>
+                
                 
              </div>
              
