@@ -248,7 +248,7 @@ var marker1 = new Tmapv2.Marker({
        <script>
            function a(){
               
-                location.href='Customer3?drag='+drag+'drag1='+drag1
+                location.href='Customer4?drag='+drag+'drag1='+drag1
            }
        </script>
 
