@@ -47,16 +47,7 @@ if(mem_pw==""){
                </div>
                </c:if>
                
-            
-            <div class="box">
-               <div class="continue_login">
-                  <label for="continue_login"> 
-                     <span>로그인 유지하기</span>
-                     <input type="checkbox" id="continue_login" name="remember-me" > 
-                     <i class="fas fa-check-square"></i>
-                  </label>
-               </div>
-               
+          
                   <div>
                      <span class="id_search"><a href="/find/id">아이디</a></span>
                      <span> ㅣ </span>
@@ -66,17 +57,7 @@ if(mem_pw==""){
             </form>
             
          <div id="oauth_login">
-            <div>
-               <a href="/oauth2/authorization/kakao"></a>
-            </div>
- 
-            <div>
-               <a href="/oauth2/authorization/naver"></a>
-            </div>
-            
-            <div>
-               <a href="/oauth2/authorization/google"></a>
-            </div>
+           
          </div>
          <div class="join"><a href="/join2" >회원 가입하러 가기</a></div>
         </div>

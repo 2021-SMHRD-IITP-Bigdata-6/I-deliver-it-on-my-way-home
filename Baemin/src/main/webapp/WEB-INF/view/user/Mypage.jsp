@@ -5,7 +5,25 @@
 <link rel="stylesheet" href="/css/user/Mypage.css">
  
 <%@ include file="/WEB-INF/view/include/header.jsp" %>
- 
+ <style>
+main .container .grid_box {
+    margin: 0 auto 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100px 450px;
+    width: 67%;
+    text-align: center;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.img_box{
+
+    height:400px;
+
+}
+
+
+ </style>
    <div class="wrap"> 
  
        <section class="title">
@@ -17,7 +35,7 @@
    
           <div class="container">
           
-             <div class="grid_box">
+             < class="grid_box">
                 <div class="login_box">
                    <c:if test="${user == null}">
                             <a href="/login"><span>로그인을 해주세요</span></a>
@@ -30,38 +48,27 @@
                      <button type="button" class="logout">로그아웃</button>
                        </c:if>
                 </div>
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
                 <div>
-                  <a href="Customer1">
-                     <span class="img_box">
-                        <img src="/img/icon44.png" alt="찜한가게">
-                     </span>
-                     <span>구매자첫페이지</span>
-                  </a>
+                   <a href="/Customer1">
+                             <span class="img_box">
+                                <img src="/img/icon11.png" alt="주문하기">
+                             </span>
+                             <span>주문하기</span>
+                        </a>
                 </div>
+            
                 
-                
+
                 <div>
-                  <a href="Testpage">
-                     <span class="img_box">
-                        <img src="/img/icon55.png" alt="주문내역">
-                     </span>
-                     <span>구매자두번째페이지</span>
-                  </a>
+                   <a href="/deliveryhome">
+                             <span class="img_box">
+                            <img src="/img/icon22.png" alt="배달하기">
+                           </span>
+                           <span>배달하기</span>
+                       </a>
                 </div>
-                
-                
-                
-                
-             </div>
+     
              
           </div>
       
@@ -71,10 +78,7 @@
     
     <!-- 콘텐츠 -->
  
- 
-    <!-- 하단 메뉴 -->
-   <%@ include file="/WEB-INF/view/include/nav.jsp" %>
-    <!-- 하단 메뉴 -->
+
  
     <!-- 푸터 -->
     <%@ include file="/WEB-INF/view/include/footer.jsp" %>
@@ -90,15 +94,6 @@
             location.href = "/login";
         })
         
-        function loginCheck(){
-           const nickname = $(".nickname").data("nickname");
-           if(!nickname) {
-              swal("로그인 후 이용 가능합니다");
-              return false;
-           }
-           return true;
-           
-        }
         
     </script>
  
