@@ -4,7 +4,32 @@
     <script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxe41992d069424d6187555c04c65bce2e"></script>
 <title>픽업 / 종료지점 선택</title>
-<%@ include file="/WEB-INF/view/include/link.jsp" %>
+<style>
+    .deli{
+       position: absolute;
+background-color: rgb(255, 255, 255);
+  z-index:1;
+ width: 30%;
+ left:600px;
+ height: 85px;
+ bottom: 10px;
+ display: flex;
+ border-radius: 30px;
+ text-align:center;
+   display:table-cell;
+   vertical-align:middle;
+   
+    }
+    .deli:hover{
+       background: silver;
+  
+    cursor: pointer;
+    }
+</style>
+
+<div class = "back" ><div style="margin-top: 8px;" OnClick="location.href ='Customer1'"><strong>Back</strong></div></div>
+              
+       
 <link rel="stylesheet" href="/css/layout/nav.css">
 <link rel="stylesheet" href="/css/home.css">
 <script type="text/javascript">
@@ -167,23 +192,23 @@ var marker1 = new Tmapv2.Marker({
    
     <div class="div_con">
         <div id="map_div"  class="div_box" >
-            <div class = "back" ><div style="margin-top: 8px;" OnClick="location.href ='Mypage'">Back</div>  </div>
+            <div class = "back" ><div style="margin-top: 8px;" OnClick="location.href ='Mypage'"><strong>Back</strong></div>  </div>
         <div style="position: absolute;
-        background-color: aliceblue;
+        background-color: rgb(255, 255, 255);
         z-index:10;
         width: 90%;
-        left:5%;
-        height: 60px;
-        text-align:center;
-        display:table-cell; 
-        text-align:center; 
+       left: 100px;
+      height: 85px;
+      top: 10px;
+      display: flex;
+      border-radius: 30px;
+      text-align:center;
+        display:table-cell;
         vertical-align:middle;
-        border-radius: 30px;
-        margin-top: 10px;
         "
         >
        
-      <div style="margin-top: 14px;"><h1><strong>픽업 / 배달 장소 선택</strong></h1></div>
+      <div style="margin-bottom: 2px;"><h1 style="margin-bottom: 5px;"><strong>픽업 / 배달 장소 선택</strong></h1></div>
         </div> 
         
      <style>
@@ -200,17 +225,23 @@ var marker1 = new Tmapv2.Marker({
       text-align:center;
         display:table-cell;
         vertical-align:middle;
-        
+       
          }
          .deli:hover{
             background: silver;
 		 
          cursor: pointer;
          }
+         
+ a:link { color: rgb(0, 0, 0); text-decoration: none;}
+ a:visited { color: black; text-decoration: none;}
+ a:hover { color: rgb(0, 0, 0); text-decoration: none;}
+
+
      </style>
        
      <div class = "deli">
-        <div  style="margin-top: 27px;" ><a href="javascript:void(0);" onclick="a()"><h1>픽업지 / 배달지 선택완료</h1></a></div>
+        <div  style="margin-top: 18px;" ><a href="javascript:void(0);" onclick="a()"><h1><strong>픽업지 / 배달지 선택완료</strong></h1></a></div>
         
 
         
