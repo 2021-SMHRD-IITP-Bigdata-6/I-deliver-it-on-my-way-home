@@ -5,7 +5,25 @@
 <link rel="stylesheet" href="/css/user/Mypage.css">
  
 <%@ include file="/WEB-INF/view/include/header.jsp" %>
- 
+ <style>
+main .container .grid_box {
+    margin: 0 auto 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100px 450px;
+    width: 67%;
+    text-align: center;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.img_box{
+
+    height:400px;
+
+}
+
+
+ </style>
    <div class="wrap"> 
  
        <section class="title">
@@ -32,63 +50,25 @@
                 </div>
                 
                 <div>
-                   <a href="/user/point" onclick="return loginCheck();">
+                   <a href="/Customer1">
                              <span class="img_box">
-                                <img src="/img/icon11.png" alt="포인트">
+                                <img src="/img/icon11.png" alt="주문하기">
                              </span>
-                             <span>포인트</span>
+                             <span>주문하기</span>
                         </a>
                 </div>
                 
                 
                 <div>
-                   <a class="updating" href="/Mypage/coupon" onclick="return false;">
+                   <a href="/deliveryhome">
                              <span class="img_box">
-                            <img src="/img/icon22.png" alt="쿠폰함">
+                            <img src="/img/icon22.png" alt="배달하기">
                            </span>
-                           <span>쿠폰함</span>
+                           <span>배달하기</span>
                        </a>
                 </div>
                 
-                
-                <div>
-                   <a class="updating" href="/Mypage/gift" onclick="return false;">
-                          <span class="img_box">
-                             <img src="/img/icon33.png" alt="선물함">
-                          </span>
-                           <span>선물함</span>
-                  </a>
-                </div>
-                
-                
-                <div>
-                  <a href="Customer1">
-                     <span class="img_box">
-                        <img src="/img/icon44.png" alt="찜한가게">
-                     </span>
-                     <span>구매자첫페이지</span>
-                  </a>
-                </div>
-                
-                
-                <div>
-                  <a href="Testpage">
-                     <span class="img_box">
-                        <img src="/img/icon55.png" alt="주문내역">
-                     </span>
-                     <span>구매자두번째페이지</span>
-                  </a>
-                </div>
-                
-                
-                <div>
-                  <a href="/user/myReview" onclick="return loginCheck()" >
-                     <span class="img_box">
-                        <img src="/img/icon66.png" alt="리뷰관리">
-                     </span>
-                     <span>리뷰관리</span>
-                  </a>
-                </div>
+               
                 
              </div>
              
@@ -100,10 +80,7 @@
     
     <!-- 콘텐츠 -->
  
- 
-    <!-- 하단 메뉴 -->
-   <%@ include file="/WEB-INF/view/include/nav.jsp" %>
-    <!-- 하단 메뉴 -->
+
  
     <!-- 푸터 -->
     <%@ include file="/WEB-INF/view/include/footer.jsp" %>
@@ -119,15 +96,6 @@
             location.href = "/login";
         })
         
-        function loginCheck(){
-           const nickname = $(".nickname").data("nickname");
-           if(!nickname) {
-              swal("로그인 후 이용 가능합니다");
-              return false;
-           }
-           return true;
-           
-        }
         
     </script>
  
