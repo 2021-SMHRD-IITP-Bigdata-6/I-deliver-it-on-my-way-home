@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="/css/layout/nav.css">
+<link rel="stylesheet" href="/css/home.css">
 <title>보행자경로</title>
 <%    
     request.setCharacterEncoding("UTF-8");
@@ -19,9 +21,16 @@
 	var totalMarkerArr = [];
 	var drawInfoArr = [];
 	var resultdrawArr = [];
-
-
-
+	
+	var delivery1 = "35.140795058034456, 126.92676796851033";
+	var delivery1x = "35.140795058034456";
+	var delivery1y = "126.92676796851033";
+	var delivery2 = "35.14020505535849, 126.9259835634641";
+	var delivery2x = "35.14020505535849";
+	var delivery2y = "126.9259835634641";
+	var delivery3 = "35.14215814632468, 126.92632162876542";
+	var delivery3x = "35.14215814632468";
+	var delivery3y = "126.92632162876542";
 
 
 	var drag = "<%=drag%>";
@@ -48,9 +57,9 @@
 	function initTmap() {
 		// 1. 지도 띄우기
 		map = new Tmapv2.Map("map_div", {
-			center : new Tmapv2.LatLng(35.14161098010376, 126.93206801335873),
+			center : new Tmapv2.LatLng(strArray[0],strArray1[0]),
 			width : "100%",
-			height : "1020px",
+			height : "1050px",
 			zoom : 17,
 			zoomControl : true,
 			scrollwheel : true
@@ -59,6 +68,11 @@
 		// 시작
 		marker_s = new Tmapv2.Marker(
 				{ // 
+					position : new Tmapv2.LatLng(strArray[0],strArray1[0]),
+//				{ // if(#deli1==(delivery1x,delivery1y)){ position : new Tmapv2.LatLng(delivery1x, delivery1y)else if(#deli2==)  }
+
+
+				
 					position : new Tmapv2.LatLng(35.140795058034456, 126.92676796851033),
 					icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png",
 					iconSize : new Tmapv2.Size(36, 48),
@@ -85,7 +99,7 @@
 				  title : "픽업지점"
             
         });
-		  var marker1 = new Tmapv2.Marker({
+	var marker1 = new Tmapv2.Marker({
 		position: new Tmapv2.LatLng(35.14179521941235, 126.92920341420356), //Marker의 중심좌표 설정.
 		map: map, //Marker가 표시될 Map 설정..
 		title: '공차 조선대점',
@@ -99,7 +113,6 @@
          icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/supermarket-128.png",
         iconSize : new Tmapv2.Size(42, 42) 
 	});
-	
 	var marker1 = new Tmapv2.Marker({
 		position: new Tmapv2.LatLng(35.14163730003545, 126.93203582686924), //Marker의 중심좌표 설정.
 		map: map, //Marker가 표시될 Map 설정..
@@ -107,8 +120,6 @@
         icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/education-128.png",
         iconSize : new Tmapv2.Size(42, 42)
 	});
-	
-	
 	var marker1 = new Tmapv2.Marker({
 		position: new Tmapv2.LatLng(35.14054940250649, 126.92957892350469), //Marker의 중심좌표 설정.
 		map: map, //Marker가 표시될 Map 설정..
@@ -130,8 +141,6 @@
         icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/education-128.png",
         iconSize : new Tmapv2.Size(42, 42)
 	});
-	
-	
 	var marker1 = new Tmapv2.Marker({
 		position: new Tmapv2.LatLng(35.143938784235395, 126.93445142259145), //Marker의 중심좌표 설정.
 		map: map, //Marker가 표시될 Map 설정..
@@ -160,7 +169,6 @@
         icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/education-128.png",
         iconSize : new Tmapv2.Size(42, 42)
 	});
-	
 	var marker1 = new Tmapv2.Marker({
 		position: new Tmapv2.LatLng(35.140719007358804, 126.92502077605246), //Marker의 중심좌표 설정.
 		map: map, //Marker가 표시될 Map 설정..
@@ -190,28 +198,21 @@
 						"resCoordType" : "EPSG3857",
 						"startName" : "출발지",
 						"endName" : "도착지",
-						"passList" :xy
-						/* "viaPoints": [
-                         {
-
-                            "viaPointId": "test01",
-                            "viaPointName": "test01",
-                            
-                            "viaX": strArray[1],
-                            "viaY": strArray[0],
-                         }
-                      ] */
+						"passList" :xy //경유지 좌표
+					
 					},
 					success : function(response) {
 						var resultData = response.features;
 						//결과 출력
-						var tDistance = "총 거리 : "+ ((resultData[0].properties.totalDistance) / 1000).toFixed(1) + "km,";
-						var tTime = " 총 시간 : "+ ((resultData[0].properties.totalTime) / 60).toFixed(0) + "분";
+						var tDistance = "배달자1의 거리 : "+ ((resultData[0].properties.totalDistance) / 1000).toFixed(1) + "km ";
+						var tTime = " 시간 : "+ ((resultData[0].properties.totalTime) / 60).toFixed(0) + "분";
 										console.log(tDistance)
 										console.log(tTime)
 										
-						/* $("#result").text(tDistance + tTime); */
+						$("#man").append( "<strong>"+tDistance + tTime+"</strong>");
+
 						
+
 						//기존 그려진 라인 & 마커가 있다면 초기화
 						if (resultdrawArr.length > 0) {
 							for ( var i in resultdrawArr) {
@@ -311,10 +312,128 @@
 </script>
 </head>
 <body onload="initTmap();">
-	
+	<style>
+		.man {
+			position: absolute;
+				background-color: aliceblue;
+				z-index:10;
+				width: 300px;
+				left:5%;
+				height: 40px;
+				text-align:left;
+				display:table-cell; 
+				
+				vertical-align:left;
+				border-radius: 30px;
+				margin-top: 10px;
+			
+				
+		}
+		.man:hover {
+		  background: silver;
+		 
+		  cursor: pointer;
+		}
+		.man1 {
+			position: absolute;
+				background-color: aliceblue;
+				z-index:10;
+				width: 300px;
+				left:5%;
+				height: 40px;
+				text-align:left;
+				display:table-cell; 
+				
+				vertical-align:left;
+				border-radius: 30px;
+				margin-top: 55px;
+			
+				
+		}
+		.man1:hover {
+		  background: silver;
+		 
+		  cursor: pointer;
+		}
+		.man2 {
+			position: absolute;
+				background-color: aliceblue;
+				z-index:10;
+				width: 300px;
+				left:5%;
+				height: 40px;
+				text-align:left;
+				display:table-cell; 
+				
+				vertical-align:left;
+				border-radius: 30px;
+				margin-top: 100px;
+			
+				
+		}
+		.man2:hover {
+		  background: silver;
+		 
+		  cursor: pointer;
+		}
+		.back{position: absolute;
+				background-color: aliceblue;
+				z-index:10;
+				width: 60px;
+				height: 40px;
+				text-align:center;
+				display:table-cell; 
+				
+				vertical-align:left;
+				border-radius: 30px;
+				margin-top: 10px;
+				margin-left: 5px;}
+		.back:hover{
+			background: silver;
+		 
+		  cursor: pointer;
+		}
+
+	 </style>
 		<!-- 190430 기존 지도를 모두 이미지 처리 위해 주석 처리 S -->
-		<div id="map_wrap" class="map_wrap3">
-			<div id="map_div"></div>
+		<div id="map_wrap" class="div_con">
+			<div id="map_div" class="div_box">
+				<div class = "back" ><div style="margin-top: 8px;" OnClick="location.href ='Customer1'"><strong>Back</strong></div>  </div>
+				<div class = "man" >
+			 <div style="margin-top: 9px;margin-left: 20px;" id="man"></div>
+				</div> 
+				<div class = "man1">
+					<div style="margin-top: 9px;margin-left: 20px;"><strong>배달자2 거리 : 변수 시간 : 변수</strong> </div>
+					  </div> 
+					  <div class = "man2">
+						<div style="margin-top: 9px;margin-left: 20px;"><strong>배달자3 거리 : 변수 시간 : 변수</strong> </div>
+						  </div> 
+				
+			</div>
+			<style>
+				.deli{
+					position: absolute;
+		  background-color: rgb(255, 255, 255);
+			 z-index:1;
+			width: 30%;
+			left:600px;
+			height: 85px;
+			bottom: 10px;
+			display: flex;
+			border-radius: 30px;
+			text-align:center;
+			  display:table-cell;
+			  vertical-align:middle;
+			  
+				}
+				.deli:hover{
+					background: silver;
+			 
+				cursor: pointer;
+				}
+		  </style>
+			<div class="deli">
+        <div style="margin-top: 20px;"><a  ><h1>주문하기</h1></a></div>
 		</div>
 		<div class="map_act_btn_wrap clear_box"></div>
 		<p id="result"></p>

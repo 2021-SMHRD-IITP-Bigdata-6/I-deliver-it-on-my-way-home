@@ -35,7 +35,7 @@ main .container .grid_box {
    
           <div class="container">
           
-             <div class="grid_box">
+             < class="grid_box">
                 <div class="login_box">
                    <c:if test="${user == null}">
                             <a href="/login"><span>로그인을 해주세요</span></a>
@@ -48,7 +48,7 @@ main .container .grid_box {
                      <button type="button" class="logout">로그아웃</button>
                        </c:if>
                 </div>
-                
+
                 <div>
                    <a href="/Customer1">
                              <span class="img_box">
@@ -57,8 +57,9 @@ main .container .grid_box {
                              <span>주문하기</span>
                         </a>
                 </div>
+            
                 
-                
+
                 <div>
                    <a href="/deliveryhome">
                              <span class="img_box">
@@ -67,10 +68,7 @@ main .container .grid_box {
                            <span>배달하기</span>
                        </a>
                 </div>
-                
-               
-                
-             </div>
+     
              
           </div>
       
