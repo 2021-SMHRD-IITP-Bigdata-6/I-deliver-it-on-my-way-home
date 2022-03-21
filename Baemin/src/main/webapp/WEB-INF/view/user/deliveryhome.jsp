@@ -23,7 +23,7 @@
     <li>
         <div id="box2">
             <div class="img_box">
-               <a href="/delivery"><img src="/img/prog.png" alt="이미지"></a>
+               <a href="delivery"><img src="/img/prog.png" alt="이미지"></a>
             </div>
             <div class="name">진행</div>
         </div>
@@ -41,13 +41,6 @@
     </ul>
     
 </section>
-
-
-
-  <!-- 하단 메뉴 -->
-  <%@ include file="/WEB-INF/view/include/nav.jsp" %>
-  <!-- 하단 메뉴 -->
-
   <!-- 푸터 -->
   <%@ include file="/WEB-INF/view//include/footer.jsp" %>
   <!-- 푸터 -->

@@ -1,203 +1,275 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>    
+    <script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxe41992d069424d6187555c04c65bce2e"></script>
+<title>픽업 / 종료지점 선택</title>
+<style>
+    .deli{
+       position: absolute;
+background-color: rgb(255, 255, 255);
+  z-index:1;
+ width: 30%;
+ left:600px;
+ height: 85px;
+ bottom: 10px;
+ display: flex;
+ border-radius: 30px;
+ text-align:center;
+   display:table-cell;
+   vertical-align:middle;
+   
+    }
+    .deli:hover{
+       background: silver;
+  
+    cursor: pointer;
+    }
+</style>
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>simpleMap</title>
-		<script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-		<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxf0b20425767d4229b30712708501d2c7"></script>
-		<script type="text/javascript">
+<div class = "back" ><div style="margin-top: 8px;" OnClick="location.href ='Customer1'"><strong>Back</strong></div></div>
+              
+       
+<link rel="stylesheet" href="/css/layout/nav.css">
+<link rel="stylesheet" href="/css/home.css">
+<script type="text/javascript">
+    var drag = "35.14153028103175,126.92892073710861";
+    var drag1= "35.14177767285252,126.93178906362117";
+    var map;
+   
+            // 페이지가 로딩이 된 후 호출하는 함수입니다.
+            $(document).ready(function(){
+                // map 생성
+                // Tmapv2.Map을 이용하여, 지도가 들어갈 div, 넓이, 높이를 설정합니다.
+                map = new Tmapv2.Map("map_div", { // "map_div" : 지도가 표시될 div의 id
+                 
+                    center: new Tmapv2.LatLng(35.14153028103175,126.92892073710861), // 지도 초기 좌표
+                    width: "100%", // map의 width 설정
+                    height: "100%", // map의 height 설정
+                    
+                    zoom : 17
+                });
+                //경유지 마커 .
+                var marker = new Tmapv2.Marker({
+                    position: new Tmapv2.LatLng(35.14153028103175,126.92892073710861), //Marker의 중심좌표 설정.
+                    draggable: true,
+                    icon : "https://cdn2.iconfinder.com/data/icons/toolbar-signs-2/512/map_marker_base-128.png",
+                    iconSize : new Tmapv2.Size(42, 42), //Marker의 드래그 가능 여부.
+                    map: map,//Marker가 표시될 Map 설정.
+				    title : "픽업지점" 
+    
+                });
+                // 도착 마커 
+	        	marker_e = new Tmapv2.Marker({
+					position : new Tmapv2.LatLng(35.14177767285252,126.93178906362117),
+                    draggable: true,
+					icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png",
+					iconSize : new Tmapv2.Size(36, 48),
+					map : map,
+					title : "도착지점"
+				});
+               
+                marker.addListener("dragend", function (evt) {
+            drag = evt.latLng.toString();
+              console.log("경유지 좌표 = " + drag);
+                    return drag;
+            });
+            marker_e.addListener("dragend", function (evt) {
+            drag1 = evt.latLng.toString();
+              console.log("도착 좌표 = " + drag1);
+                    return drag1;
+            });
 
-var map;
-var marker_s, marekr_e;
-
-//경로그림정보
-var drawInfoArr = [];
-
-
-function initTmap(){
-	// 1. 지도 띄우기
-	map = new Tmapv2.Map("map_div", {
-		center: new Tmapv2.LatLng(37.56701114710962, 126.9973611831669),
-		width : "100%",
-		height : "400px",
-		zoom : 15,
-		zoomControl : true,
-		scrollwheel : true
+var marker1 = new Tmapv2.Marker({
+		position: new Tmapv2.LatLng(35.14179521941235, 126.92920341420356), //Marker의 중심좌표 설정.
+		map: map, //Marker가 표시될 Map 설정..
+		title: '공차 조선대점',
+        icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/coffee_shop-128.png",
+        iconSize : new Tmapv2.Size(42, 42)
 	});
-	
-	// 시작, 도착 심볼찍기
-	// 시작
-	marker_s = new Tmapv2.Marker({
-		position : new Tmapv2.LatLng(37.568085523663385, 126.98605733268329),
-		icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png",
-		iconSize : new Tmapv2.Size(24, 38),
-		map:map
+	var marker1 = new Tmapv2.Marker({
+		position: new Tmapv2.LatLng(35.14120740675808, 126.92427887863883), //Marker의 중심좌표 설정.
+		map: map, //Marker가 표시될 Map 설정..
+		title: 'GS25 조선공대점',
+         icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/supermarket-128.png",
+        iconSize : new Tmapv2.Size(42, 42) 
 	});
-	
-	// 도착 
-	marker_e = new Tmapv2.Marker({
-		position : new Tmapv2.LatLng(37.56445848334345, 127.00973587385866),
-		icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png",
-		iconSize : new Tmapv2.Size(24, 38),
-		map:map
+	var marker1 = new Tmapv2.Marker({
+		position: new Tmapv2.LatLng(35.14054940250649, 126.92957892350469), //Marker의 중심좌표 설정.
+		map: map, //Marker가 표시될 Map 설정..
+		title: '조선대학교 의과 대학1관',
+        icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/education-128.png",
+        iconSize : new Tmapv2.Size(42, 42)
 	});
-	
-	// marker = new Tmapv2.Marker({
-	// 	position : new Tmapv2.LatLng(37.56626352138058, 126.98735015742581),
-	// 	icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_1.png",
-	// 	iconSize : new Tmapv2.Size(24, 38),
-	// 	map:map
-	// });
-	
-	// marker = new Tmapv2.Marker({
-	// 	position : new Tmapv2.LatLng(37.56568310756034, 127.00221495976581),
-	// 	icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_2.png",
-	// 	iconSize : new Tmapv2.Size(24, 38),
-	// 	map:map
-	// });
-	
-	// marker = new Tmapv2.Marker({
-	// 	position : new Tmapv2.LatLng(37.570369, 126.992153),
-	// 	icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_3.png",
-	// 	iconSize : new Tmapv2.Size(24, 38),
-	// 	map:map
-	// });
-	
-	// marker = new Tmapv2.Marker({
-	// 	position : new Tmapv2.LatLng(37.56335290252303, 127.00352387777271),
-	// 	icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_4.png",
-	// 	iconSize : new Tmapv2.Size(24, 38),
-	// 	map:map
-	// });
-	
-	// marker = new Tmapv2.Marker({
-	// 	position : new Tmapv2.LatLng(37.570721714117965, 127.00186090818215),
-	// 	icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_5.png",
-	// 	iconSize : new Tmapv2.Size(24, 38),
-	// 	map:map
-	// });
-	
-	// marker = new Tmapv2.Marker({
-	// 	position : new Tmapv2.LatLng(37.56515390827723, 126.99066536776698),
-	// 	icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_6.png",
-	// 	iconSize : new Tmapv2.Size(24, 38),
-	// 	map:map
-	// });
-	
-	var headers = {}; 
-	headers["appKey"]="l7xxf0b20425767d4229b30712708501d2c7";
-	
-	$.ajax({
-		type:"POST",
-		headers : headers,
-		url:"https://apis.openapi.sk.com/tmap/routes/routeOptimization10?version=1&format=json",//
-		async:false,
-		contentType: "application/json",
-		data: JSON.stringify({
-				  "reqCoordType": "WGS84GEO",
-				  "resCoordType" : "EPSG3857",
-				  "startName": "출발",
-				  "startX": "126.98605733268329",
-				  "startY": "37.568085523663385",
-				  "startTime": "201711121314",
-				  "endName": "도착",
-				  "endX": "127.00973587385866",
-				  "endY": "37.56445848334345",
-				  "searchOption" : "0",
-				  "viaPoints": [
-				    {
-				      "viaPointId": "test01",
-				      "viaPointName": "test01",
-				      "viaX": "126.98735015742581",
-				      "viaY": "37.56626352138058",
-				    },
-				    // {
-				    //   "viaPointId": "test02",
-				    //   "viaPointName": "test02",
-				    //   "viaX": "127.00221495976581",
-				    //   "viaY": "37.56568310756034",
-				    // },
-				    // {
-				    //   "viaPointId": "test03",
-				    //   "viaPointName": "test03",
-				    //   "viaX": "126.992153",
-				    //   "viaY": "37.570369",
-				    // },
-				    // {
-				    //   "viaPointId": "test04",
-				    //   "viaPointName": "test04",
-				    //   "viaX": "127.00352387777271",
-				    //   "viaY": "37.56335290252303",
-				    // },
-				    // {
-				    //   "viaPointId": "test05",
-				    //   "viaPointName": "test05",
-				    //   "viaX": "127.00186090818215",
-				    //   "viaY": "37.570721714117965",
-				    // },
-				    // {
-				    //   "viaPointId": "test06",
-				    //   "viaPointName": "test06",
-				    //   "viaX": "126.99066536776698", 
-				    //   "viaY": "37.56515390827723",
-				    // }
-				  ]
-		}),
-		success:function(response){
-			var resultData = response.properties;
-			var resultFeatures = response.features;
-			
-			// 결과 출력
-			var tDistance = "총 거리 : " + (resultData.totalDistance/1000).toFixed(1) + "km,  ";
-			var tTime = "총 시간 : " + (resultData.totalTime/60).toFixed(0) + "분,  ";
-			var tFare = "총 요금 : " + resultData.totalFare + "원";
-			
-			$("#result").text(tDistance+tTime+tFare);
-			
-			for(var i in resultFeatures) {
-				var geometry = resultFeatures[i].geometry;
-				var properties = resultFeatures[i].properties;
-				var polyline_;
+	var marker1 = new Tmapv2.Marker({
+		position: new Tmapv2.LatLng(35.139935260384, 126.9340743056433), //Marker의 중심좌표 설정.
+		map: map, //Marker가 표시될 Map 설정..
+		title: 'it융합대학',
+        icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/education-128.png",
+        iconSize : new Tmapv2.Size(42, 42)
+	});
+	var marker1 = new Tmapv2.Marker({
+		position: new Tmapv2.LatLng(35.13920996727157, 126.92979510793026), //Marker의 중심좌표 설정.
+		map: map, //Marker가 표시될 Map 설정..
+		title: '조선이공대 학교 기계설계과',
+        icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/education-128.png",
+        iconSize : new Tmapv2.Size(42, 42)
+	});
+	var marker1 = new Tmapv2.Marker({
+		position: new Tmapv2.LatLng(35.143938784235395, 126.93445142259145), //Marker의 중심좌표 설정.
+		map: map, //Marker가 표시될 Map 설정..
+		title: '광주은행 ATM 조대지점',
+        icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/financial-128.png",
+        iconSize : new Tmapv2.Size(42, 42)
+	});
+	var marker1 = new Tmapv2.Marker({
+		position: new Tmapv2.LatLng(35.14047335157769, 126.92752059475961), //Marker의 중심좌표 설정.
+		map: map, //Marker가 표시될 Map 설정..
+		title: '조선대학교 신협',
+        icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/financial-128.png",
+        iconSize : new Tmapv2.Size(42, 42)
+	});
+	var marker1 = new Tmapv2.Marker({
+		position: new Tmapv2.LatLng(35.13871864586712, 126.9274562217457), //Marker의 중심좌표 설정.
+		map: map, //Marker가 표시될 Map 설정..
+		title: '미니스톱 조선대 병원본관점',
+         icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/supermarket-128.png",
+        iconSize : new Tmapv2.Size(42, 42) 
+	});
+	var marker1 = new Tmapv2.Marker({
+		position: new Tmapv2.LatLng(35.13790269482861, 126.9288938857232), //Marker의 중심좌표 설정.
+		map: map, //Marker가 표시될 Map 설정..
+		title: '조선간호대학교',
+        icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/education-128.png",
+        iconSize : new Tmapv2.Size(42, 42)
+	});	
+	var marker1 = new Tmapv2.Marker({
+		position: new Tmapv2.LatLng(35.140719007358804, 126.92502077605246), //Marker의 중심좌표 설정.
+		map: map, //Marker가 표시될 Map 설정..
+		title: '조선학숙',
+        icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/residence-128.png",
+        iconSize : new Tmapv2.Size(42,42)
+	});
+            })
+           
+        </script>
+        
+ 
+ <style>
+    .div_con{
+        position: relative;
+        width: 100% ;
+        height: 1080px;   
+      
+    }
+     .div_box{
+         position: relative;
+         width: 90%;
+         height: 90%;
+     
+     }
+     .back{position: absolute;
+				background-color: aliceblue;
+				z-index:10;
+				width: 60px;
+				height: 40px;
+				text-align:center;
+				display:table-cell; 
 				
-				drawInfoArr = [];
-				
-				if(geometry.type == "LineString") {
-					for(var j in geometry.coordinates){
-						// 경로들의 결과값(구간)들을 포인트 객체로 변환 
-						var latlng = new Tmapv2.Point(geometry.coordinates[j][0], geometry.coordinates[j][1]);
-						// 포인트 객체를 받아 좌표값으로 변환
-						var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
-						// 포인트객체의 정보로 좌표값 변환 객체로 저장
-						var convertChange = new Tmapv2.LatLng(convertPoint._lat, convertPoint._lng);
-						
-						drawInfoArr.push(convertChange);
-					}
+				vertical-align:left;
+				border-radius: 30px;
+				margin-top: 10px;
+				margin-left: 5px;}
+		.back:hover{
+			background: silver;
+		 
+		  cursor: pointer;
+        }
+ </style>
 
-					polyline_ = new Tmapv2.Polyline({
-						path : drawInfoArr,
-						strokeColor : "#FF0000",
-						strokeWeight: 6,
-						map : map
-					});
-				}
-			}
-		},
-		error:function(request,status,error){
-			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		}
-	});
-}	
-	
 
-</script>
-<body onload="initTmap()"><!-- 맵 생성 실행 -->
-	<p id="result"></p>
+<body>
+   
+    <div class="div_con">
+        <div id="map_div"  class="div_box" >
+            <div class = "back" ><div style="margin-top: 8px;" OnClick="location.href ='Mypage'"><strong>Back</strong></div>  </div>
+        <div style="position: absolute;
+        background-color: rgb(255, 255, 255);
+        z-index:10;
+        width: 90%;
+       left: 100px;
+      height: 85px;
+      top: 10px;
+      display: flex;
+      border-radius: 30px;
+      text-align:center;
+        display:table-cell;
+        vertical-align:middle;
+        "
+        >
+       
+      <div style="margin-bottom: 2px;"><h1 style="margin-bottom: 5px;"><strong>내 위치</strong></h1></div>
+        </div> 
+        
+     <style>
+         .deli{
+            position: absolute;
+     background-color: rgb(255, 255, 255);
+       z-index:1;
+      width: 30%;
+      left:600px;
+      height: 85px;
+      bottom: 10px;
+      display: flex;
+      border-radius: 30px;
+      text-align:center;
+        display:table-cell;
+        vertical-align:middle;
+       
+         }
+         .deli:hover{
+            background: silver;
+		 
+         cursor: pointer;
+         }
+         
+ a:link { color: rgb(0, 0, 0); text-decoration: none;}
+ a:visited { color: black; text-decoration: none;}
+ a:hover { color: rgb(0, 0, 0); text-decoration: none;}
 
-		
-		<div id="map_wrap" class="map_wrap">
-			<div id="map_div"></div>
-		</div>
-	</body>
-</html>	
-				
+
+     </style>
+       
+     <div class = "deli">
+        <div  style="margin-top: 18px;" ><a href="javascript:void(0);" onclick="a()"><h1><strong>배달 하기</strong></h1></a></div>
+        
+
+        
+       <script>
+           function a(){
+              
+                location.href='delivery2?drag='+drag+'drag1='+drag1
+           }
+       </script>
+
+        
+
+     
+    </div>
+    
+     </div> 
+    
+    </div>
+    
+   
+    
+
+ 
+    
+ 
+   
+</body>
+
+
+
+</html>

@@ -38,12 +38,16 @@ public class deliveryController {
     	
     	return "/user/deliveryfinish";
     }
-  
-//    @GetMapping("/delivery.do")
-//    public String delivery(String drag){
-//    	
-//    	
-//    	 
-//    	return "/user/deliverylist";
-//    }
+    @GetMapping("/delivery1")
+    public String delivery1(){
+    	
+    	return "/user/delivery1";
+    }
+    @GetMapping("/delivery2")
+    public String delivery2(){
+    	
+    	return "/user/delivery2";
+    }
+
+
 }

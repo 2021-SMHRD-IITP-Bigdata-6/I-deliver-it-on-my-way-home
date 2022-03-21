@@ -4,49 +4,31 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>배달자 배달 하기</title>
+<link rel="stylesheet" href="/css/layout/nav.css">
+<link rel="stylesheet" href="/css/home.css">
 <%    
     request.setCharacterEncoding("UTF-8");
     String drag = request.getParameter("drag");
 	 String drag1 = request.getParameter("drag1");
 %>
-<style>
-	.main_box {
-		width: 90%;
-		height: 70px;
-	}
-	.common {
-		display: inline-block;
-		background-color: white;
-		font-size: 25px;
-		width: 1200px;
-		height:50px;
-	}
-	.menu{
-		text-align: center;
-		display:table-cell; text-align:center; vertical-align:middle;
-	}
-	</style>
-	  
-	  <div class="main_box">
-	  <div class="menu common">우선 추천</div>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script
 	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxf0b20425767d4229b30712708501d2c7"></script>
 <script type="text/javascript">
-	var map;
-	var marker_s, marker_e, marker_p1, marker_p2;
-	var totalMarkerArr = [];
-	var drawInfoArr = [];
-	var resultdrawArr = [];
-
-
-
+	var tDistance;
+			var tTime;
+			var map;
+			var marker_s, marker_e, marker_p1, marker_p2;
+			var totalMarkerArr = [];
+			var drawInfoArr = [];
+			var resultdrawArr = [];
+			var delivery1y;
+			var delivery1x;
 
 
 	var drag = "<%=drag%>";
 	console.log("drag = " + drag);
-	
+
 
    var strArray=drag.split(',');
    var strArray1=strArray[1].split('drag1=');
@@ -59,53 +41,61 @@
 	console.log(xy);
 
   
-   console.log('drag1 y = ' + strArray1[1]);
+    console.log('drag1 y = ' + strArray1[1]);
 	console.log('drag2 x = ' + strArray[2])
 	var x2 = strArray[2];
 	var y2 =strArray1[1];
 	var xy2= strArray1[1]+","+strArray[2];
 	console.log(xy2);
+
+	var delivery1 = "35.14153028103175, 126.92892073710861";
+			var del_1 = {
+				x : 126.92892073710861,
+				y : 35.14153028103175
+			}
+			var delivery1y = "35.14153028103175";
+			var delivery1x = "126.92892073710861";
+
 	function initTmap() {
-		// 1. 지도 띄우기
 		map = new Tmapv2.Map("map_div", {
-			center : new Tmapv2.LatLng(35.14205592237349, 126.93097639694186),
-			width : "110%",
-			height : "750px",
+			center : new Tmapv2.LatLng(35.14153028103175,126.92892073710861),
+			width : "100%",
+			height : "850px",
 			zoom : 16,
 			zoomControl : true,
 			scrollwheel : true
 		});
 		// 2. 시작, 도착 심볼찍기
-		// 시작
+		// 내 위치
 		marker_s = new Tmapv2.Marker(
-				{ // 
-					position : new Tmapv2.LatLng(strArray[0],strArray1[0]),
+				{
+					position : new Tmapv2.LatLng(strArray1[0],strArray[0]),
 					icon : "/img/human12.png",
 					iconSize : new Tmapv2.Size(42, 42),
 					map : map,
-					title : "배달자"
+					title : "내 위치"
 
 				});
-		// 도착
+		// 도착지
 		marker_e = new Tmapv2.Marker(
 				{
 					position : new Tmapv2.LatLng(strArray1[1],strArray[2]),
 					icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png",
-					iconSize : new Tmapv2.Size(42, 42),
+					iconSize : new Tmapv2.Size(32, 42),
 					map : map,
-					title : "도착지점"
+					title : "도착지"
 				});
-		// 경유지 [ 가게 좌표 적기]
+		// 경유지
 		marker = new Tmapv2.Marker({
-            
-              position : new Tmapv2.LatLng(strArray1[0],strArray[0]),
+			
+              position : new Tmapv2.LatLng(35.14495180401309,126.93443535884322),
               icon : "https://cdn2.iconfinder.com/data/icons/toolbar-signs-2/512/map_marker_base-128.png",
-              iconSize : new Tmapv2.Size(42, 42),
+              iconSize : new Tmapv2.Size(38, 42),
               map:map,
-				  title : "픽업지점"
+				  title : "경유지"
             
-         	});
-	
+        });
+
 		  var headers = {}; 
         headers["appKey"]="l7xxf0b20425767d4229b30712708501d2c7";
 
@@ -119,34 +109,38 @@
 						"appKey" : "l7xxf0b20425767d4229b30712708501d2c7",
 						"startX" : x,
 						"startY" : y,
-						"endX" : "126.92676796851033",
-						"endY" : "35.140795058034456",
+						"endX" : x2,
+						"endY" : y2,
+						"viaX" : "126.93443535884322",
+						"viaY" : "35.14495180401309",
 						"reqCoordType" : "WGS84GEO",
 						"resCoordType" : "EPSG3857",
 						"startName" : "출발지",
 						"endName" : "도착지",
-						"passList" :xy 		 // 경유지
-						/* "viaPoints": [
-                         {
-
-                            "viaPointId": "test01",
-                            "viaPointName": "test01",
-                            
-                            "viaX": strArray[1],
-                            "viaY": strArray[0],
-                         }
-                      ] */
+						"passList" :xy, //경유지 좌표
+						"viaPoints": [
+				    {
+				      "viaPointId": "marker",
+				      "viaPointName": "marker",
+				      "viaX": "126.93443535884322",
+				      "viaY": "35.14495180401309",
+					},
+						]
 					},
 					success : function(response) {
 						var resultData = response.features;
 						//결과 출력
-						var tDistance = "총 거리 : "+ ((resultData[0].properties.totalDistance) / 1000).toFixed(1) + "km,";
-						var tTime = " 총 시간 : "+ ((resultData[0].properties.totalTime) / 60).toFixed(0) + "분";
+						var tDistance = "배달 경로: "+ ((resultData[0].properties.totalDistance) / 1000).toFixed(1) + "km ";
+						var tTime = " 시간 : "+ ((resultData[0].properties.totalTime) / 60).toFixed(0) + "분";
+						
 										console.log(tDistance)
 										console.log(tTime)
 										
-						 $("#result").text(tDistance + tTime);
+						$("#one").append(tDistance + tTime);
+
+
 						
+
 						//기존 그려진 라인 & 마커가 있다면 초기화
 						if (resultdrawArr.length > 0) {
 							for ( var i in resultdrawArr) {
@@ -155,9 +149,6 @@
 							}
 							resultdrawArr = [];
 						}
-						// list 내위치 deli 내위치 동일하게
-						// 도착지 경유지 보이기
-						// 추천 경로 만들기 (css / 좌표 변수 값)
 						
 						drawInfoArr = [];
 						for ( var i in resultData) { //for문 [S]
@@ -249,66 +240,112 @@
 </script>
 </head>
 <body onload="initTmap();">
-	<div class="div_con">
-        <div id="map_div"  class="div_box" >
-			<div style="position: absolute;
-			background-color: aliceblue;
-			opacity: 0.8;
-			z-index:10;
+	
+	<style>
+		.one {
+			position: absolute;
+				background-color: aliceblue;
+				z-index:10;
+				width: 300px;
+				left:5%;
+				height: 40px;
+				text-align:left;
+				display:table-cell; 
+				
+				vertical-align:left;
+				border-radius: 30px;
+				margin-top: 10px;
+			
+				
+		}
+		.one:hover {
+		  background: silver;
+		 
+		  cursor: pointer;
+		}
+		.two {
+			position: absolute;
+				background-color: aliceblue;
+				z-index:10;
+				width: 300px;
+				left:5%;
+				height: 40px;
+				text-align:left;
+				display:table-cell; 
+				
+				vertical-align:left;
+				border-radius: 30px;
+				margin-top: 55px;
+			
+				
+		}
+		.two:hover {
+		  background: silver;
+		 
+		  cursor: pointer;
+		}
+		.back{position: absolute;
+				background-color: aliceblue;
+				z-index:10;
+				width: 60px;
+				height: 40px;
+				text-align:center;
+				display:table-cell; 
+				
+				vertical-align:left;
+				border-radius: 30px;
+				margin-top: 10px;
+				margin-left: 5px;}
+		.back:hover{
+			background: silver;
+		 
+		  cursor: pointer;
+		}
+
+	 </style>
+	 <script>
+		 function one(){
+			 
+		 }
+	 </script>>
+		<!-- 190430 기존 지도를 모두 이미지 처리 위해 주석 처리 S -->
+		<div id="map_wrap" class="div_con">
+			
+			<div id="map_div" class="div_box">
+				<div class = "back" ><div style="margin-top: 8px;" OnClick="location.href ='deliverylist'"><strong>Back</strong></div>  </div>
+				<div class = "one" >
+			 <div style="margin-top: 9px;margin-left: 20px;" id="one"></div>
+				</div> 
+				
+			</div>
+			<style>
+				.deli{
+					position: absolute;
+		  background-color: rgb(255, 255, 255);
+			 z-index:1;
 			width: 30%;
-			height: 30px;
+			left:600px;
+			height: 85px;
+			bottom: 10px;
+			display: flex;
+			border-radius: 30px;
 			text-align:center;
-			display:table-cell; text-align:left; vertical-align:middle;
-			
-			border-radius: 30px;">
-		   
-		   <div style="margin-top: 2px;" >추천동선1</div>
-		   
+			  display:table-cell;
+			  vertical-align:middle;
+			  
+				}
+				.deli:hover{
+					background: silver;
+			 
+				cursor: pointer;
+				}
+		  </style>
+			<div class="deli">
+        <div style="margin-top: 20px;"><a><h1>배달하기</h1></a></div>
 		</div>
-			
-     
-       
-     <div style="position: absolute;
-     background-color: rgb(15, 208, 140);
-       z-index:1;
-      width: 90%;
-      left:5%;
-      height: 85px;
-      bottom: 5px;
-
-    
-     
-      display: flex;
-      border-radius: 30px;
-      text-align:center;
-        display:table-cell;
-        vertical-align:middle;">
-        <div style="margin-top: 27px;"><a href="javascript:void(0);" onclick="a()"><h1>배달 하기</h1></a></div>
-        
-
-        
-       <script>
-           function a(){
-              
-                location.href='delivery?drag='+drag
-           }
-       </script>
-
-        
-
-     
-    </div>
-    
-     </div> 
-    
-    </div>
-    
-   
-    
-
- 
-    
- 
-   </body>
+		<div class="map_act_btn_wrap clear_box"></div>
+		<p id="result"></p>
+	<div class="map_act_btn_wrap clear_box"></div>
+	<p id="result"></p>
 </body>
 </html>
