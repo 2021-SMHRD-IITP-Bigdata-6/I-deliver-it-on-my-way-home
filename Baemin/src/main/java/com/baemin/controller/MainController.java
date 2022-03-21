@@ -24,7 +24,11 @@ public class MainController {
     public String MyPage4() {
        return "user/Customer4";
     }
-	
-	
+    @GetMapping("/memo")
+    public String MyPage5() {
+       return "user/memo";
+    }
+ 
+  
 
 }

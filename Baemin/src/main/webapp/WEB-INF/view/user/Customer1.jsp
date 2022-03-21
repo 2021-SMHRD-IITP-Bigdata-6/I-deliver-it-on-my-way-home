@@ -80,7 +80,7 @@ background-color: rgb(255, 255, 255);
                     return drag1;
             });
 
-var marker1 = new Tmapv2.Marker({
+    var marker1 = new Tmapv2.Marker({
 		position: new Tmapv2.LatLng(35.14179521941235, 126.92920341420356), //Marker의 중심좌표 설정.
 		map: map, //Marker가 표시될 Map 설정..
 		title: '공차 조선대점',
@@ -150,8 +150,22 @@ var marker1 = new Tmapv2.Marker({
         icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/residence-128.png",
         iconSize : new Tmapv2.Size(42,42)
 	});
-            })
-           
+    var marker1 = new Tmapv2.Marker({
+                position: new Tmapv2.LatLng(35.14619487207343, 126.93122617411066), //Marker의 중심좌표 설정.
+                map: map, //Marker가 표시될 Map 설정..
+                title: '맘스터치(조선대점)',
+                icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/cafe-128.png",
+                iconSize : new Tmapv2.Size(42, 42)
+            });    
+    var marker1 = new Tmapv2.Marker({
+                position: new Tmapv2.LatLng(35.14577174000281, 126.9307683482674), //Marker의 중심좌표 설정.
+                map: map, //Marker가 표시될 Map 설정..
+                title: '명랑핫도그 조선대점',
+                icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/cafe-128.png",
+                iconSize : new Tmapv2.Size(42, 42)
+            });            
+})
+            
         </script>
         
  

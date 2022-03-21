@@ -28,6 +28,9 @@ text-align:center;
  
 	cursor: pointer;
 	}
+	a:link { color: rgb(0, 0, 0); text-decoration: none;}
+ a:visited { color: black; text-decoration: none;}
+ a:hover { color: rgb(0, 0, 0); text-decoration: none;}
 </style>
 <%    
     request.setCharacterEncoding("UTF-8");
@@ -123,15 +126,13 @@ text-align:center;
 		<!-- 190430 기존 지도를 모두 이미지 처리 위해 주석 처리 S -->
 		<div id="map_wrap" class="div_con">
 			<div id="map_div" class="div_box"> 
-				<div id="map_div1" class="div_box">   
-					<div id="map_div2" class="div_box"> 
-						<div id="map_div3" class="div_box"> 
+				
 				<div class = "back" ><div style="margin-top: 8px;" OnClick="location.href ='Customer1'"><strong>Back</strong></div></div>
-								<div class = "man" onclick="man1()"><div style="margin-top: 9px;margin-left: 20px;" id="man1" ></div><strong></strong></div> 
-								<div class = "man1" onclick="man2()"><div style="margin-top: 9px;margin-left: 20px;" id="man2" ><strong></strong></div></div> 
-								<div class = "man2" onclick="man3()"><div style="margin-top: 9px;margin-left: 20px;" id="man3" ><strong></strong> </div></div> 
+								<div class = "man" ><div style="margin-top: 9px;margin-left: 20px;" id="man1" ></div><strong></strong></div> 
+								<div class = "man1" ><div style="margin-top: 9px;margin-left: 20px;" id="man2" ><strong></strong></div></div> 
+								<div class = "man2" ><div style="margin-top: 9px;margin-left: 20px;" id="man3" ><strong></strong> </div></div> 
 								
-								<div class="deli"><div style="margin-top: 20px;"><a  ><h1>주문하기</h1></a></div></div>
+								<div class="deli"><div style="margin-top: 20px;"><a href = "javascript:void(0);" onclick="popup();"><h1>주문하기</h1></a></div></div>
 							<div class="map_act_btn_wrap clear_box"></div>
 							<p id="result"></p>
 			
@@ -204,6 +205,8 @@ text-align:center;
 				// 0.1 Start좌표 구하기
 				// JSON Array
 				
+
+				//배달자 x/y위치 입니다.
 				var starts = [
 									{x: 126.9259835634641, y : 35.14020505535849},
 									{ x: 126.92632162876542, y : 35.14215814632468},
@@ -492,5 +495,17 @@ text-align:center;
 			
 		
 		</script>
+		
+<script>
+	
+        function popup(){
+            var url = "memo";
+            var name = "memo test";
+            var option = "width = 550, height =825, top = 100, left = 600, location = no"
+            window.open(url, name, option);
+        }
+    </script>
+
+		
 </body>
 </html>
