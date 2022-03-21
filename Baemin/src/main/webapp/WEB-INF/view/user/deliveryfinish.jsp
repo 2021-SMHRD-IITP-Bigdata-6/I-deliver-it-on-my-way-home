@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>보행자경로</title>
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>    
+    <script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxf0b20425767d4229b30712708501d2c7"></script>
+<%@ include file="/WEB-INF/view/include/link.jsp" %>
+<link rel="stylesheet" href="/css/layout/nav.css">
+<link rel="stylesheet" href="/css/home.css">
 <%    
     request.setCharacterEncoding("UTF-8");
     String drag = request.getParameter("drag");
@@ -12,17 +13,14 @@
 %>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script
-	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxe41992d069424d6187555c04c65bce2e"></script>
+	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxf0b20425767d4229b30712708501d2c7"></script>
 <script type="text/javascript">
 	var map;
 	var marker_s, marker_e, marker_p1, marker_p2;
 	var totalMarkerArr = [];
 	var drawInfoArr = [];
 	var resultdrawArr = [];
-
-
-
-
+	
 
 	var drag = "<%=drag%>";
 	console.log("drag = " + drag);
@@ -48,10 +46,10 @@
 	function initTmap() {
 		// 1. 지도 띄우기
 		map = new Tmapv2.Map("map_div", {
-			center : new Tmapv2.LatLng(35.14161098010376, 126.93206801335873),
+			center : new Tmapv2.LatLng(35.14153028103175,126.92892073710861),
 			width : "100%",
-			height : "1020px",
-			zoom : 17,
+			height : "850px",
+			zoom : 16,
 			zoomControl : true,
 			scrollwheel : true
 		});
@@ -60,36 +58,40 @@
 		marker_s = new Tmapv2.Marker(
 				{ // 
 					position : new Tmapv2.LatLng(strArray[0],strArray1[0]),
-					icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png",
-					iconSize : new Tmapv2.Size(24, 38),
+//				{ // if(#deli1==(delivery1x,delivery1y)){ position : new Tmapv2.LatLng(delivery1x, delivery1y)else if(#deli2==)  }
+
+
+				
+					position : new Tmapv2.LatLng(strArray[0],strArray1[0]),
+					icon : "/img/human12.png",
+					iconSize : new Tmapv2.Size(40, 40),
 					map : map,
-					title : "배달자"
+					title : "내 위치"
 
 				});
-		// 도착
+		// 경유지
 		marker_e = new Tmapv2.Marker(
 				{
 					position : new Tmapv2.LatLng(strArray1[1],strArray[2]),
-					icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png",
-					iconSize : new Tmapv2.Size(24, 38),
+					icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png",
+					iconSize : new Tmapv2.Size(36, 48),
 					map : map,
-					title : "도착지점"
+					title : "경유지"
 				});
-		// 경유지 [ 가게 좌표 적기]
+		// 도착점
 		marker = new Tmapv2.Marker({
             
-              position : new Tmapv2.LatLng(strArray[0],strArray1[0]),
-              icon : "https://cdn2.iconfinder.com/data/icons/toolbar-signs-2/512/map_marker_base-128.png",
-              iconSize : new Tmapv2.Size(42, 42),
+              position : new Tmapv2.LatLng(35.140795058034456, 126.92676796851033),
+              icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png",
+              iconSize : new Tmapv2.Size(36, 48),
               map:map,
-				  title : "픽업지점"
+				  title : "도착점"
             
         });
-	
 
 
 		  var headers = {}; 
-        headers["appKey"]="l7xxe41992d069424d6187555c04c65bce2e";
+        headers["appKey"]="l7xxf0b20425767d4229b30712708501d2c7";
 
 		// 3. 경로탐색 API 사용요청
 		$.ajax({
@@ -98,37 +100,30 @@
 					url : "https://apis.openapi.sk.com/tmap/routes/pedestrian?version=1&format=json&callback=result",
 					async : false,
 					data : {
-						"appKey" : "l7xxe41992d069424d6187555c04c65bce2e",
-						"startX" : "126.92676796851033",
-						"startY" : "35.140795058034456",
-						"endX" : x2,
-						"endY" : y2,
+						"appKey" : "l7xxf0b20425767d4229b30712708501d2c7",
+						"startX" : strArray1[0],
+						"startY" : strArray[0],
+						"endX" : 126.92676796851033,
+						"endY" : 35.140795058034456,
 						"reqCoordType" : "WGS84GEO",
 						"resCoordType" : "EPSG3857",
 						"startName" : "출발지",
 						"endName" : "도착지",
-						"passList" :xy
-						/* "viaPoints": [
-                         {
-
-                            "viaPointId": "test01",
-                            "viaPointName": "test01",
-                            
-                            "viaX": strArray[1],
-                            "viaY": strArray[0],
-                         }
-                      ] */
+						"passList" : xy //경유지 좌표
+					
 					},
 					success : function(response) {
 						var resultData = response.features;
 						//결과 출력
-						var tDistance = "총 거리 : "+ ((resultData[0].properties.totalDistance) / 1000).toFixed(1) + "km,";
-						var tTime = " 총 시간 : "+ ((resultData[0].properties.totalTime) / 60).toFixed(0) + "분";
+						var tDistance = "추천 경로 : "+ ((resultData[0].properties.totalDistance) / 1000).toFixed(1) + "km ";
+						var tTime = " 시간 : "+ ((resultData[0].properties.totalTime) / 60).toFixed(0) + "분";
 										console.log(tDistance)
 										console.log(tTime)
 										
-						/* $("#result").text(tDistance + tTime); */
+						$("#man").append( "<strong>"+tDistance + tTime+"</strong>");
+
 						
+
 						//기존 그려진 라인 & 마커가 있다면 초기화
 						if (resultdrawArr.length > 0) {
 							for ( var i in resultdrawArr) {
@@ -226,16 +221,117 @@
 		resultdrawArr.push(polyline_);
 	}
 </script>
-</head>
 <body onload="initTmap();">
-	
-		<!-- 190430 기존 지도를 모두 이미지 처리 위해 주석 처리 S -->
-		<div id="map_wrap" class="map_wrap3">
-			<div id="map_div"></div>
-		</div>
-		<div class="map_act_btn_wrap clear_box"></div>
-		<p id="result"></p>
-		
+	<style>
+		.div_con{
+			position: relative;
+			width: 100% ;
+			height: 1080px;   
+			
+		}
+		.div_box{
+			position: relative;
+         width: 90%;
+         height: 90%;
+		 
+		}
+		.back{position: absolute;
+			background-color: aliceblue;
+			z-index:10;
+			width: 60px;
+			height: 40px;
+			text-align:center;
+			display:table-cell; 
+			
+			vertical-align:left;
+			border-radius: 30px;
+			margin-top: 10px;
+			margin-left: 5px;}
+			.back:hover{
+				background: silver;
+				
+				cursor: pointer;
+			}
+ </style>
 
+
+<body>
+    <div class="div_con">
+		<div id="map_div"  class="div_box" >
+			<div class = "back" ><div style="margin-top: 8px;" OnClick="location.href ='deliveryhome'">Back</div>  </div>
+			<div style="position: absolute;
+        background-color: aliceblue;
+        background-color: rgb(255, 255, 255, 0.4);
+        z-index:10;
+        width: 90%;
+        left:5%;
+        height: 60px;
+        text-align:center;
+        display:table-cell; 
+        text-align:center; 
+        vertical-align:middle;
+        border-radius: 30px;
+        margin-top: 10px;
+        "
+        >
+		
+		<div style="margin-top: 14px;"><h1><strong>내 위치</strong></h1></div>
+      <div style="margin-top: 14px;"><h2><strong>지도를 움직여 아이콘을 원하는 위치로 옮기세요</strong></h2></div>
+	</div> 
+	
+	<style>
+         .deli{
+			 position: absolute;
+     background-color: rgb(255, 255, 255);
+	 z-index:1;
+      width: 30%;
+      left:600px;
+      height: 85px;
+      bottom: 10px;
+      display: flex;
+      border-radius: 30px;
+      text-align:center;
+        display:table-cell;
+        vertical-align:middle;
+
+         }
+         .deli:hover{
+            background: silver;
+		 
+         cursor: pointer;
+         }
+     </style>
+       
+     <div class = "deli">
+        <div  style="margin-top: 27px;" ><a href="javascript:void(0);" onclick="a()"><h1>배달 ON</h1></a></div>
+        
+
+        
+       <script>
+           function a(){
+              
+                location.href='delivery?drag='+drag
+           }
+       </script>
+
+        
+
+     
+    </div>
+    
+     </div> 
+    
+    </div>
+    
+   
+    
+
+ 
+    
+ 
+   
 </body>
+</body>
+
+
 </html>

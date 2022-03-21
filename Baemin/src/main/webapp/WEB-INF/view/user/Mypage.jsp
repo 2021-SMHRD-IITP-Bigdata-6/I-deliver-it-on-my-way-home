@@ -35,7 +35,6 @@ main .container .grid_box {
    
           <div class="container">
           
-             < class="grid_box">
                 <div class="login_box">
                    <c:if test="${user == null}">
                             <a href="/login"><span>로그인을 해주세요</span></a>
@@ -61,7 +60,7 @@ main .container .grid_box {
                 
 
                 <div>
-                   <a href="/deliveryhome">
+                   <a href="/deliverylist">
                              <span class="img_box">
                             <img src="/img/icon22.png" alt="배달하기">
                            </span>
