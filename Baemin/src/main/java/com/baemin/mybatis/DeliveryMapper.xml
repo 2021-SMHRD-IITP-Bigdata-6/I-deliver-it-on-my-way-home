@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="delivery">
+ <select id="Delivery_check" parameterType="com.baemin.dto.Delivery" resultType="com.baemin.dto.Delivery">
+  SELECT latitude,longitude FROM t_moving_data_mon WHERE moving_day ='2021-07-05' AND moving_time =#{moving_time} AND mem_id=#{mem_id}
+ </select>
+</mapper>

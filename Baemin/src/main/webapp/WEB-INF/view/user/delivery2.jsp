@@ -28,6 +28,9 @@ text-align:center;
  
 	cursor: pointer;
 	}
+	a:link { color: rgb(0, 0, 0); text-decoration: none;}
+ a:visited { color: black; text-decoration: none;}
+ a:hover { color: rgb(0, 0, 0); text-decoration: none;}
 </style>
 <%    
     request.setCharacterEncoding("UTF-8");
@@ -123,15 +126,13 @@ text-align:center;
 		<!-- 190430 기존 지도를 모두 이미지 처리 위해 주석 처리 S -->
 		<div id="map_wrap" class="div_con">
 			<div id="map_div" class="div_box"> 
-				<div id="map_div1" class="div_box">   
-					<div id="map_div2" class="div_box"> 
-						<div id="map_div3" class="div_box"> 
+				
 				<div class = "back" ><div style="margin-top: 8px;" OnClick="location.href ='Customer1'"><strong>Back</strong></div></div>
-								<div class = "man" onclick="man1()"><div style="margin-top: 9px;margin-left: 20px;" id="man1" ></div><strong></strong></div> 
-								<div class = "man1" onclick="man2()"><div style="margin-top: 9px;margin-left: 20px;" id="man2" ><strong></strong></div></div> 
-								<div class = "man2" onclick="man3()"><div style="margin-top: 9px;margin-left: 20px;" id="man3" ><strong></strong> </div></div> 
+								<div class = "man" ><div style="margin-top: 9px;margin-left: 20px;" id="man1" ></div><strong></strong></div> 
+								<div class = "man1" ><div style="margin-top: 9px;margin-left: 20px;" id="man2" ><strong></strong></div></div> 
+								<div class = "man2" ><div style="margin-top: 9px;margin-left: 20px;" id="man3" ><strong></strong> </div></div> 
 								
-								<div class="deli"><div style="margin-top: 20px;"><a  ><h1>주문하기</h1></a></div></div>
+								<div class="deli"><div style="margin-top: 20px;"><a href = "javascript:void(0);" onclick="popup();"><h1>배달 완료</h1></a></div></div>
 							<div class="map_act_btn_wrap clear_box"></div>
 							<p id="result"></p>
 			
@@ -143,7 +144,7 @@ text-align:center;
 
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script
-			src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxe41992d069424d6187555c04c65bce2e"></script>
+			src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxf0b20425767d4229b30712708501d2c7"></script>
 		<script type="text/javascript">
 			var tDistance;
 			var tTime;
@@ -183,6 +184,56 @@ text-align:center;
 			var delivery3 = "35.14215814632468, 126.92632162876542";
 			var delivery3y = "35.14215814632468";
 			var delivery3x = "126.92632162876542";
+			var latitude;
+			var longitude;
+	
+		
+		function Test(){
+            $.ajax({
+                type: 'GET',
+                url: 'http://192.168.56.1:5000/',
+                dataType : 'JSON', // 받아온 데이터를 json으로 인식
+               // contentType: "application/json", // <--- 우리가 전송해줄내용이 json데이터이다
+                success: function(rs){
+
+                   // alert('성공! 데이터 값:' + rs['result'][0]["user_id"]+" " + rs['result'][0]["time"][0])
+				// window.location.href = "deliver1.jsp?medel=" + res;
+				de1 = rs['result'][0]["user_id"];
+				time = rs['result'][0]["time"][1];
+				
+				// controller로 이동
+				setTimeout(()=> innerTest(), 500); // 5초
+			
+
+				console.log(de1);
+				},
+                error: function(request, status, error){
+                    alert('ajax 통신 실패')
+                    alert(error);
+                }
+            })
+        }
+
+		function innerTest(){
+			
+			$.ajax({
+				type: 'GET',
+				url : '/ajaxTest',
+				data:{
+					"mem_id":de1,
+					"moving_time":time
+					},
+				success : function(res){
+					latitude=res.latitude;
+					longitude=res.longitude;
+					console.log(res.latitude);
+					console.log(res.longitude);
+					
+				},
+				error : function() {alert('error!');}
+
+			})
+		}
 
 			function setStart(delivery1y, delivery1x){
 				marker_s = new Tmapv2.Marker(
@@ -203,11 +254,10 @@ text-align:center;
 
 				// 0.1 Start좌표 구하기
 				// JSON Array
-				
+
+				//배달자 x/y위치 입니다.
 				var starts = [
-									{x: 126.9259835634641, y : 35.14020505535849},
-									{ x: 126.92632162876542, y : 35.14215814632468},
-									{x : 126.92900198049601 ,y : 35.13975416036563}
+									{x: 126.9259835634641, y : 35.14020505535849}
 									
 									]
 				console.log(starts);
@@ -334,7 +384,7 @@ text-align:center;
 		
 		
 				var headers = {}; 
-				headers["appKey"]="l7xxe41992d069424d6187555c04c65bce2e";
+				headers["appKey"]="l7xxf0b20425767d4229b30712708501d2c7";
 				
 				// 3. 경로탐색 API 사용요청
 				var tDistance;
@@ -352,6 +402,8 @@ text-align:center;
 						'color' : colorList[i]	
 					}), (i+1)*2000)	
 				}
+
+				Test();
 							
 						
 			}
@@ -379,7 +431,7 @@ text-align:center;
 							url : "https://apis.openapi.sk.com/tmap/routes/pedestrian?version=1&format=json&callback=result",
 							async : false,
 							data : {
-								"appKey" : "l7xxe41992d069424d6187555c04c65bce2e",
+								"appKey" : "l7xxf0b20425767d4229b30712708501d2c7",
 								"startX" : dataObject.startX,
 								"startY" : dataObject.startY,
 								"endX" : dataObject.endX,
@@ -393,7 +445,7 @@ text-align:center;
 							success : function(response) {
 								var resultData = response.features;
 								//결과 출력
-								tDistance = "배달자"+ dataObject.idx +"의 거리 : "+ ((resultData[0].properties.totalDistance) / 1000).toFixed(1) + "km ";
+								tDistance = "배달 경로 : "+ ((resultData[0].properties.totalDistance) / 1000).toFixed(1) + "km ";
 							   tTime = " 시간 : "+ ((resultData[0].properties.totalTime) / 60).toFixed(0) + "분";
 								document.getElementById("man" + dataObject.idx).innerHTML="<strong>"+tDistance + tTime+"</strong>";
 							
@@ -492,5 +544,24 @@ text-align:center;
 			
 		
 		</script>
+		
+		
+	<script>
+	
+    
+	
+        function popup(){
+
+            var url = "memo";
+            var name = "memo test";
+            var option = "width = 550, height =825, top = 100, left = 600, location = no"
+            window.open(url, name, option);
+        }
+    </script>
+
+<script>
+
+</script>
+
 </body>
 </html>

@@ -5,10 +5,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.baemin.dto.Delivery;
+import com.baemin.service.DeliveryService;
+import com.baemin.service.UserService;
+
 @Controller
-public class deliveryController {
+public class DeliveryController {
  
 	@Autowired
 	// DeilveryService DeilveryService;
@@ -48,6 +53,11 @@ public class deliveryController {
     	
     	return "/user/delivery2";
     }
-
+    @GetMapping("/delivery3")
+    public String delivery3(){
+    	
+    	return "/user/delivery3";
+    }
+ 
 
 }

@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>    
     <script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxe41992d069424d6187555c04c65bce2e"></script>
-<title>픽업 / 종료지점 선택</title>
+	
+<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxf0b20425767d4229b30712708501d2c7"></script>
 <style>
     .deli{
        position: absolute;
@@ -32,10 +32,15 @@ background-color: rgb(255, 255, 255);
        
 <link rel="stylesheet" href="/css/layout/nav.css">
 <link rel="stylesheet" href="/css/home.css">
+
+
 <script type="text/javascript">
     var drag = "35.14153028103175,126.92892073710861";
     var drag1= "35.14177767285252,126.93178906362117";
     var map;
+	var de1;
+	var time;
+	
    
             // 페이지가 로딩이 된 후 호출하는 함수입니다.
             $(document).ready(function(){
@@ -49,14 +54,14 @@ background-color: rgb(255, 255, 255);
                     
                     zoom : 17
                 });
-                //경유지 마커 .
-                var marker = new Tmapv2.Marker({
+                //경유지 마커 .  
+                var marker = new Tmapv2.Marker({     // 니의 위치 (다댐맨 DB 데이터)
                     position: new Tmapv2.LatLng(35.14153028103175,126.92892073710861), //Marker의 중심좌표 설정.
                     draggable: true,
                     icon : "https://cdn2.iconfinder.com/data/icons/toolbar-signs-2/512/map_marker_base-128.png",
                     iconSize : new Tmapv2.Size(42, 42), //Marker의 드래그 가능 여부.
                     map: map,//Marker가 표시될 Map 설정.
-				    title : "픽업지점" 
+				    title : "" 
     
                 });
                 // 도착 마커 
@@ -208,7 +213,7 @@ var marker1 = new Tmapv2.Marker({
         "
         >
        
-      <div style="margin-bottom: 2px;"><h1 style="margin-bottom: 5px;"><strong>내 위치</strong></h1></div>
+      <div style="margin-bottom: 2px;"><h1 style="margin-bottom: 5px;"><strong>나의 위치</strong></h1></div>
         </div> 
         
      <style>
@@ -241,7 +246,7 @@ var marker1 = new Tmapv2.Marker({
      </style>
        
      <div class = "deli">
-        <div  style="margin-top: 18px;" ><a href="javascript:void(0);" onclick="a()"><h1><strong>배달 하기</strong></h1></a></div>
+        <div  style="margin-top: 18px;" ><a href="javascript:void(0);" onclick="a()"><h1><strong>배달 시작</strong></h1></a></div>
         
 
         
@@ -261,15 +266,59 @@ var marker1 = new Tmapv2.Marker({
     
     </div>
     
-   
-    
 
- 
-    
  
    
 </body>
+<script>
+	
+	
+		
+	function Test(){
+		$.ajax({
+			type: 'GET',
+			url: 'http://192.168.56.1:5000/',
+			dataType : 'JSON', // 받아온 데이터를 json으로 인식
+		   // contentType: "application/json", // <--- 우리가 전송해줄내용이 json데이터이다
+			success: function(rs){
 
+			   // alert('성공! 데이터 값:' + rs['result'][0]["user_id"]+" " + rs['result'][0]["time"][0])
+			// window.location.href = "deliver1.jsp?medel=" + res;
+			de1 = rs['result'][0]["user_id"];
+			time = rs['result'][0]["time"][1];
+			
+			// controller로 이동
+			setTimeout(()=> innerTest(), 500); // 5초
+
+			console.log(de1);
+			},
+			error: function(request, status, error){
+				alert('ajax 통신 실패')
+				alert(error);
+			}
+		})
+	}
+
+	function innerTest(){
+
+		$.ajax({
+			type: 'GET',
+			url : '/ajaxTest',
+			data:{
+				"mem_id":de1,
+				"moving_time":time
+				},
+			success : function(res){
+				console.log(res.latitude);
+				console.log(res.longitude);
+				
+			},
+			error : function() {alert('error!');}
+
+		})
+	}
+
+</script>
 
 
 </html>
