@@ -14,9 +14,14 @@ private SqlSession sqlSession; // SqlSession 의존관계 주입
 
 @Override
 public Delivery Delivery_check(Delivery vo) {
-
 	return sqlSession.selectOne("delivery.Delivery_check",vo);
-
-
+ }
+@Override
+public Delivery Delivery_check2(Delivery vo) {
+	return sqlSession.selectOne("delivery.Delivery_check",vo);
+ }
+@Override
+public Delivery Delivery_check3(Delivery vo) {
+	return sqlSession.selectOne("delivery.Delivery_check",vo);
  }
 }

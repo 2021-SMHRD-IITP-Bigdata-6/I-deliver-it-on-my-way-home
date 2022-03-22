@@ -288,20 +288,7 @@ background-color: rgb(255, 255, 255);
 })
             
         </script>
-        <script>
-
-            $('#execute').click(function(){                 
-                $.ajax({
-                    type: 'GET',
-                    url: 'http://192.168.56.1:5000/:5000/test',
-                    data: {
-                        'drag' : drag ,
-                        'drag1' : drag1
-                    },
-                })
-            })
-        
-         </script>
+  
        
      
  <style>
@@ -396,7 +383,7 @@ background-color: rgb(255, 255, 255);
         
        <script>
            function a(){
-              
+          
                 location.href='Customer4?drag='+drag+'drag1='+drag1
            }
        </script>

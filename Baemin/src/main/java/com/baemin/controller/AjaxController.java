@@ -20,5 +20,17 @@ public class AjaxController {
     	System.out.println(vo.getMoving_time());
 		return deliveryService.Delivery_check(vo);
 	}
+    @RequestMapping("/ajaxTest2")
+   	public Delivery Delivery_check2(Delivery vo){
+       	System.out.println(vo.getMem_id());
+       	System.out.println(vo.getMoving_time());
+   		return deliveryService.Delivery_check(vo);
+   	}
+    @RequestMapping("/ajaxTest3")
+   	public Delivery Delivery_check3(Delivery vo){
+       	System.out.println(vo.getMem_id());
+       	System.out.println(vo.getMoving_time());
+   		return deliveryService.Delivery_check(vo);
+   	}
 	
 }

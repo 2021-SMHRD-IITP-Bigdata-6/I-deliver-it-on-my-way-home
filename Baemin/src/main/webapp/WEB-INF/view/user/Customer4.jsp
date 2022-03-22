@@ -39,7 +39,7 @@ text-align:center;
 %>
 
 </head>
-<body onload="initTmap();">
+<body>
 	<style>
 		.man {
 			position: absolute;
@@ -137,12 +137,12 @@ text-align:center;
 							<p id="result"></p>
 			
 			
-		
-		
+	
  
  
 
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	
 		<script
 			src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxe41992d069424d6187555c04c65bce2e"></script>
 		<script type="text/javascript">
@@ -157,8 +157,8 @@ text-align:center;
 			var delivery1x;
 		
 			var drag = "<%=drag%>";
-		
 			
+			var drag1 = "<%=drag1%>";
 		
 			var strArray=drag.split(',');
 			var strArray1=strArray[1].split('drag1=');
@@ -185,6 +185,24 @@ text-align:center;
 			var delivery3 = "35.14215814632468, 126.92632162876542";
 			var delivery3y = "35.14215814632468";
 			var delivery3x = "126.92632162876542";
+			let latitude;
+			let longitude;
+			let latitude2;
+			let longitude2;
+			let latitude3;
+			let longitude3;
+			$(document).ready(()=>{
+
+				// ajax 이용해서 값 가져오기
+				Test()
+
+				setTimeout(() => {
+				console.log(latitude +" , " + longitude)
+				initTmap()
+				}, 1000 ); 
+
+
+			});
 
 			function setStart(delivery1y, delivery1x){
 				marker_s = new Tmapv2.Marker(
@@ -198,7 +216,8 @@ text-align:center;
 						});
 				return marker_s;
 			}
-
+					
+	
 			
 			//기본지도
 			function initTmap() {
@@ -209,9 +228,9 @@ text-align:center;
 
 				//배달자 x/y위치 입니다.
 				var starts = [
-									{x: 126.9259835634641, y : 35.14020505535849},
-									{ x: 126.92632162876542, y : 35.14215814632468},
-									{x : 126.92900198049601 ,y : 35.13975416036563}
+									{x: longitude, y:latitude},
+									{ x: longitude2, y : latitude2},
+									{x : longitude3 ,y : latitude3}
 									
 									]
 				console.log(starts);
@@ -528,7 +547,7 @@ text-align:center;
 								var resultData = response.features;
 								//결과 출력
 								tDistance = "배달자"+ dataObject.idx +"의 거리 : "+ ((resultData[0].properties.totalDistance) / 1000).toFixed(1) + "km ";
-							   tTime = " 시간 : "+ ((resultData[0].properties.totalTime) / 60).toFixed(0) + "분";
+							   	tTime = " 시간 : "+ ((resultData[0].properties.totalTime) / 60).toFixed(0) +timeplus1+ "분";
 								document.getElementById("man" + dataObject.idx).innerHTML="<strong>"+tDistance + tTime+"</strong>";
 							
 								//기존 그려진 라인 & 마커가 있다면 초기화
@@ -613,21 +632,96 @@ text-align:center;
 						});
 					}
 			
-						
+			function Test(){
 			
+			$.ajax({
+				type: 'POST',
+				url: 'http://192.168.56.1:5000/',
+				dataType : 'JSON', // 받아온 데이터를 json으로 인식
+			    data:{
+					"drag":drag
+				},
+				success: function(rs){
+				de1 = rs['result'][0]["user_id"];
+				time1 = rs['result'][0]["time"][1];
+				timeplus1 = rs['result'][0]["time"][0];
+				de2 = rs['result'][1]["user_id"];
+				time2 = rs['result'][1]["time"][1];
+				timeplus2 = rs['result'][0]["time"][0];
+				de3= rs['result'][2]["user_id"];
+				time3= rs['result'][2]["time"][1];
+				timeplus3 = rs['result'][0]["time"][0];
+				console.log(timeplus1);
+				console.log(time2);
+				setTimeout(()=> innerTest(), 100);
+				},
+				error: function(request, status, error){
+					alert('ajax 통신 실패')
+					alert(error);
+				}
+			})
+		}
+	
+		function innerTest(){
+	
+			$.ajax({
+				type: 'GET',
+				url : '/ajaxTest',
+				data:{
+				"mem_id":de1,
+				"moving_time":time1
+				},
+			success : function(res){
+				latitude=res.latitude;
+				longitude=res.longitude;
+				console.log(res.latitude);
+				console.log(res.longitude);
 			
+			},
+			error : function() {alert('error!');}
+		})
 
-
-
-
-
-			 
+			$.ajax({
+				type: 'GET',
+				url : '/ajaxTest2',
+				data:{
+				"mem_id":de2,
+				"moving_time":time2
+				},
+			success : function(res){
+				latitude2=res.latitude;
+				longitude2=res.longitude;
+				console.log(res.latitude);
+				console.log(res.longitude);
 			
+			},
+			error : function() {alert('error!');}
+		})
+			$.ajax({
+				type: 'GET',
+				url : '/ajaxTest3',
+				data:{
+				"mem_id":de3,
+				"moving_time":time3
+				},
+			success : function(res){
+				latitude3=res.latitude;
+				longitude3=res.longitude;
+				console.log(res.latitude);
+				console.log(res.longitude);
+			
+			},
+			error : function() {alert('error!');}
+	
+	
+		})
+	}
 			
 		
 		</script>
-		
+	
 <script>
+		
 	
         function popup(){
             var url = "memo";

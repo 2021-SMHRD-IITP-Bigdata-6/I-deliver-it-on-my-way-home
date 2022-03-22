@@ -6,4 +6,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
  <select id="Delivery_check" parameterType="com.baemin.dto.Delivery" resultType="com.baemin.dto.Delivery">
   SELECT latitude,longitude FROM t_moving_data_mon WHERE moving_day ='2021-07-05' AND moving_time =#{moving_time} AND mem_id=#{mem_id}
  </select>
+ <select id="Delivery_check2" parameterType="com.baemin.dto.Delivery" resultType="com.baemin.dto.Delivery">
+  SELECT latitude,longitude FROM t_moving_data_mon WHERE moving_day ='2021-07-05' AND moving_time =#{moving_time} AND mem_id=#{mem_id}
+ </select>
+ <select id="Delivery_check3" parameterType="com.baemin.dto.Delivery" resultType="com.baemin.dto.Delivery">
+  SELECT latitude,longitude FROM t_moving_data_mon WHERE moving_day ='2021-07-05' AND moving_time =#{moving_time} AND mem_id=#{mem_id}
+ </select>
 </mapper>
