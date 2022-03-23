@@ -47,8 +47,8 @@ background-color: rgb(255, 255, 255);
                 map = new Tmapv2.Map("map_div", { // "map_div" : 지도가 표시될 div의 id
                  
                     center: new Tmapv2.LatLng(35.14386062986565, 126.9261315427303), // 지도 초기 좌표
-                    width: "100%", // map의 width 설정
-                    height: "100%", // map의 height 설정
+                    width : "100%",
+					height : "1500px",
                     
                     zoom : 16
                 });
@@ -338,7 +338,7 @@ background-color: rgb(255, 255, 255);
         width: 80%;
        left: 100px;
       height: 85px;
-      top: -130px;
+      top: -150px;
       display: flex;
       border-radius: 30px;
       text-align:center;
@@ -349,8 +349,10 @@ background-color: rgb(255, 255, 255);
        
       <div style="margin-bottom: 2px;">
         <h1 style="margin-bottom: 5px;"><strong>픽업 / 배달 장소 선택</strong></h1></div>
+        <div class="helpwrite" style="text-align: center; color:#595959;font-size: large;margin-top: 50px;"><h2>1. 파란 좌표를 움직여 나의 위치를 선택해 주세요.</h2></div>   
+        <div class="helpwrite" style="text-align: center; color:#595959;font-size: large;"><h2>2. 빨간 좌표를 움직여 배달받을 위치를 선택해 주세요.</h2></div>
         </div> 
-        <div class="helpwrite" style="text-align: center; color:#595959;"><h2>파란 좌표를 움직여 나의 위치를 선택해 주세요.</h2></div>   
+     
      <style>
          .deli{
             position: absolute;
@@ -359,7 +361,7 @@ background-color: rgb(255, 255, 255);
       width: 70%;
       left:140px;
       height: 85px;
-      bottom: 10px;
+      bottom: 80px;
       display: flex;
       border-radius: 30px;
       text-align:center;
@@ -380,7 +382,7 @@ background-color: rgb(255, 255, 255);
 
      </style>
        
-     <div class = "deli" style="position: relative; left:220px; top:1200px;">
+     <div class = "deli" style="position: relative; left:220px; top:1600px;">
         <div style="margin-top: 18px;" ><a href="javascript:void(0);" onclick="a()"><h1><strong>픽업지 / 배달지 선택완료</strong></h1></a></div>
         
 

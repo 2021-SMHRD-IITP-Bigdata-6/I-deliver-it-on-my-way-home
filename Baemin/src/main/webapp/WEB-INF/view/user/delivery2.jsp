@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="/css/layout/nav.css">
 <link rel="stylesheet" href="/css/home.css">
-<title>보행자경로</title>
+<title>배달자경로</title>
 <style>
 	.deli{
 		position: absolute;

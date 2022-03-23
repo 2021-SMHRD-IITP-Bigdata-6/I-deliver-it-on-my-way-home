@@ -12,15 +12,16 @@
       position: absolute;
 background-color: rgb(255, 255, 255);
  z-index:1;
-width: 30%;
-left:600px;
-height: 85px;
-bottom: 10px;
+width: 50%;
+left:400px;
+height: 120px;
+bottom: -80px;
 display: flex;
 border-radius: 30px;
 text-align:center;
   display:table-cell;
   vertical-align:middle;
+  font-size: 32px;
   
    }
    .deli:hover{
@@ -39,23 +40,22 @@ text-align:center;
 %>
 
 
-<body style="height: 740px; width: 340px; margin-left: -3px;margin-top: -20px;">
+<body style="background-color: #ead7c6;">
    <style>
       .man {
          position: absolute;
-            background-color: aliceblue;
-            z-index:10;
-            width: 300px;
-            left:5%;
-            height: 40px;
-            text-align:left;
-            display:table-cell; 
-            
-            vertical-align:left;
-            border-radius: 30px;
-            margin-top: 10px;
-         
-            
+				background-color: aliceblue;
+				z-index:10;
+				width: 700px;
+				left:12%;
+				height: 70px;
+				text-align:left;
+				display:table-cell; 
+				
+				vertical-align:left;
+				border-radius: 30px;
+				margin-top: -240px;  
+			
       }
       .man:hover {
         background: silver;
@@ -66,15 +66,15 @@ text-align:center;
          position: absolute;
             background-color: aliceblue;
             z-index:10;
-            width: 300px;
-            left:5%;
-            height: 40px;
+            width: 700px;
+            left:12%;
+            height: 70px;
             text-align:left;
             display:table-cell; 
             
             vertical-align:left;
             border-radius: 30px;
-            margin-top: 55px;
+            margin-top: -160px;
          
             
       }
@@ -87,15 +87,15 @@ text-align:center;
          position: absolute;
             background-color: aliceblue;
             z-index:10;
-            width: 300px;
-            left:5%;
-            height: 40px;
+            width: 700px;
+            left:12%;
+            height: 70px;
             text-align:left;
             display:table-cell; 
             
             vertical-align:left;
             border-radius: 30px;
-            margin-top: 100px;
+            margin-top: -80px;
          
             
       }
@@ -114,7 +114,7 @@ text-align:center;
             
             vertical-align:left;
             border-radius: 30px;
-            margin-top: 10px;
+            margin-top: -200px;
             margin-left: 5px;}
       .back:hover{
          background: silver;
@@ -124,15 +124,16 @@ text-align:center;
 
     </style>
       <!-- 190430 기존 지도를 모두 이미지 처리 위해 주석 처리 S -->
-      <div id="map_wrap" class="div_con" style="height: 760px; width: 360px;">
-         <div id="map_div" class="div_box"> 
-            
-            <div class = "back" ><div style="margin-top: 8px;" OnClick="location.href ='Customer1'"><strong>Back</strong></div></div>
-                        <div class = "man" ><div style="margin-top: 9px;margin-left: 20px;" id="man1" ></div><strong></strong></div> 
-                        <div class = "man1" ><div style="margin-top: 9px;margin-left: 20px;" id="man2" ><strong></strong></div></div> 
-                        <div class = "man2" ><div style="margin-top: 9px;margin-left: 20px;" id="man3" ><strong></strong> </div></div> 
+    
+      <div id="map_wrap" class="div_con" style="position:relative;top:0px;height:1550px;">
+         <div id="map_div" class="div_box" style="width: 100%; height: 1500px;margin-top:250px;"> 
+            <div class = "man" ><div style="margin-top: 9px;margin-left: 20px;font-size: 40px;" id="man1" ></div><strong></strong></div> 
+            <div class = "man1" ><div style="margin-top: 9px;margin-left: 20px;font-size: 40px;" id="man2" ><strong></strong></div></div> 
+            <div class = "man2" ><div style="margin-top: 9px;margin-left: 20px;font-size: 40px;" id="man3" ><strong></strong> </div></div> 
+           <!--  <div class = "back" ><div style="margin-top: 8px;" OnClick="location.href ='Customer1'"><strong>Back</strong></div></div> -->
+                   
                         
-                        <div class="deli"><div style="margin-top: 20px;"><a href = "javascript:void(0);" onclick="popup();"><h1>주문하기</h1></a></div></div>
+                        <div class="deli"><div style="margin-top: -30px;"><a href = "javascript:void(0);" onclick="popup();"><h1>주문하기</h1></a></div></div>
                      <div class="map_act_btn_wrap clear_box"></div>
                      <p id="result"></p>
          
@@ -212,7 +213,7 @@ text-align:center;
                   {
                      position : new Tmapv2.LatLng(delivery1y, delivery1x),
                      icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png",
-                     iconSize : new Tmapv2.Size(36, 48),
+                     iconSize : new Tmapv2.Size(52, 72),
                      map : map,
                      title : "배달자"
    
@@ -246,8 +247,8 @@ text-align:center;
             
             map = new Tmapv2.Map("map_div", {
                center : new Tmapv2.LatLng(strArray[0],strArray1[0]),
-               width : "980px",
-               height : "2014px",
+               width : "100%",
+					height : "1500px",
                zoom : 17,
                zoomControl : true,
                scrollwheel : true,
