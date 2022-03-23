@@ -7,5 +7,6 @@
             <div>Git주소>jcm829700@naver.com</div>
             <div>DCX기반 빅데이터 분석 서비스 개발자과정</div>
        </div>
+
 <script src="/js/util/util.js"></script>
 </footer>
