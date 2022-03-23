@@ -125,13 +125,13 @@ text-align:center;
 	 </style>
 		<!-- 190430 기존 지도를 모두 이미지 처리 위해 주석 처리 S -->
 		<div class = "man" style="width:400px;height:80px;margin-top: 150px; margin-left: 20px; text-align: center;font-size: 24px;"><div style="margin-top: 15px;" id="man1" ></div><strong></strong></div> 
-		<div id="map_wrap" class="div_con" style="position:relative;top:300px;height:1155px;">
+		<div id="map_wrap" class="div_con" style="position:relative;top:0px;height:1550px;">
 			<div id="map_div" class="div_box"> 								
 							<div class="deli"style="margin-top: 10px;"><div style="margin-top: 20px;"><a href = "login_check"><h1>배달 완료</h1></a></div></div>
 							<div class="map_act_btn_wrap clear_box"></div>
 							<p id="result"></p>
 			
-							<div class="ordermemo"style="width:500px;height:300px;background-color:#black; border-radius:2px;"></div>
+			<div class="ordermemo"style="width:850px;height:380px; background-color: #fff; border-radius:5%; position: relative;top:1580px;left:50px;"></div>
 		
 		
  
