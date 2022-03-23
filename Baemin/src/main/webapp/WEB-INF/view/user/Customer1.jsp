@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>    
+<!DOCTYPE html>   
+
     <script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxe41992d069424d6187555c04c65bce2e"></script>
 <title>픽업 / 종료지점 선택</title>
 <style>
+
+
     .deli{
        position: absolute;
 background-color: rgb(255, 255, 255);
@@ -27,7 +30,7 @@ background-color: rgb(255, 255, 255);
     }
 </style>
 
-<div class = "back" ><div style="margin-top: 8px;" OnClick="location.href ='Customer1'"><strong>Back</strong></div></div>
+<div class = "back"style =  "margin-top: 38px;" ><div style="margin-top: 8px;" OnClick="location.href ='Customer1'"><strong>Back</strong></div></div>
               
        
 <link rel="stylesheet" href="/css/layout/nav.css">
@@ -324,18 +327,18 @@ background-color: rgb(255, 255, 255);
  </style>
 
 
-<body>
+<body style="background-color: #ead7c6;">
    
-    <div class="div_con">
+    <div class="div_con" style="position:relative;top:150px;">
         <div id="map_div"  class="div_box" >
-            <div class = "back" ><div style="margin-top: 8px;" OnClick="location.href ='Mypage'"><strong>Back</strong></div>  </div>
+            
         <div style="position: absolute;
         background-color: rgb(255, 255, 255);
         z-index:10;
-        width: 90%;
+        width: 80%;
        left: 100px;
       height: 85px;
-      top: 10px;
+      top: -130px;
       display: flex;
       border-radius: 30px;
       text-align:center;
@@ -344,16 +347,17 @@ background-color: rgb(255, 255, 255);
         "
         >
        
-      <div style="margin-bottom: 2px;"><h1 style="margin-bottom: 5px;"><strong>픽업 / 배달 장소 선택</strong></h1></div>
+      <div style="margin-bottom: 2px;">
+        <h1 style="margin-bottom: 5px;"><strong>픽업 / 배달 장소 선택</strong></h1></div>
         </div> 
-        
+        <div class="helpwrite" style="text-align: center; color:#595959;"><h2>파란 좌표를 움직여 나의 위치를 선택해 주세요.</h2></div>   
      <style>
          .deli{
             position: absolute;
      background-color: rgb(255, 255, 255);
        z-index:1;
-      width: 30%;
-      left:600px;
+      width: 70%;
+      left:140px;
       height: 85px;
       bottom: 10px;
       display: flex;
@@ -376,7 +380,7 @@ background-color: rgb(255, 255, 255);
 
      </style>
        
-     <div class = "deli">
+     <div class = "deli" style="position: relative; left:220px; top:1200px;">
         <div style="margin-top: 18px;" ><a href="javascript:void(0);" onclick="a()"><h1><strong>픽업지 / 배달지 선택완료</strong></h1></a></div>
         
 

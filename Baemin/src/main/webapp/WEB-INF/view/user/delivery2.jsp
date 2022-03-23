@@ -200,7 +200,7 @@ text-align:center;
 			
             $.ajax({
                 type: 'POST',
-                url: 'http://192.168.56.1:5000/',
+                url: 'http://172.30.1.2:5000/',
                 dataType : 'JSON', // 받아온 데이터를 json으로 인식
                // contentType: "application/json", // <--- 우리가 전송해줄내용이 json데이터이다
 			   data:{

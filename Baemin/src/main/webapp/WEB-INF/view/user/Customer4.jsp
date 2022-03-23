@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="/css/layout/nav.css">
@@ -38,8 +38,8 @@ text-align:center;
     String drag1 = request.getParameter("drag1");
 %>
 
-</head>
-<body>
+
+<body style="height: 740px; width: 340px; margin-left: -3px;margin-top: -20px;">
    <style>
       .man {
          position: absolute;
@@ -124,7 +124,7 @@ text-align:center;
 
     </style>
       <!-- 190430 기존 지도를 모두 이미지 처리 위해 주석 처리 S -->
-      <div id="map_wrap" class="div_con">
+      <div id="map_wrap" class="div_con" style="height: 760px; width: 360px;">
          <div id="map_div" class="div_box"> 
             
             <div class = "back" ><div style="margin-top: 8px;" OnClick="location.href ='Customer1'"><strong>Back</strong></div></div>
@@ -191,6 +191,9 @@ text-align:center;
          let longitude2;
          let latitude3;
          let longitude3;
+         var timeplus1;
+         var timeplus2;
+         var timeplus3;
          $(document).ready(()=>{
 
             // ajax 이용해서 값 가져오기
@@ -243,11 +246,12 @@ text-align:center;
             
             map = new Tmapv2.Map("map_div", {
                center : new Tmapv2.LatLng(strArray[0],strArray1[0]),
-               width : "100%",
-               height : "1050px",
+               width : "980px",
+               height : "2014px",
                zoom : 17,
                zoomControl : true,
-               scrollwheel : true
+               scrollwheel : true,
+               draggable: true
             });
       
             // 2. 시작, 도착 심볼찍기
@@ -276,115 +280,97 @@ text-align:center;
                     map:map,
                     title : "픽업지점"
               });
-              var marker1 = new Tmapv2.Marker({
+           var marker1 = new Tmapv2.Marker({
       position: new Tmapv2.LatLng(35.14179521941235, 126.92920341420356), //Marker의 중심좌표 설정.
       map: map, //Marker가 표시될 Map 설정..
       title: '공차 조선대점',
         icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/coffee_shop-128.png",
         iconSize : new Tmapv2.Size(42, 42)
    });
-   var marker1 = new Tmapv2.Marker({
+           var marker1 = new Tmapv2.Marker({
       position: new Tmapv2.LatLng(35.14120740675808, 126.92427887863883), //Marker의 중심좌표 설정.
       map: map, //Marker가 표시될 Map 설정..
       title: 'GS25 조선공대점',
          icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/supermarket-128.png",
         iconSize : new Tmapv2.Size(42, 42) 
-   });
-   
-   
-   
-   
-    
-   var marker1 = new Tmapv2.Marker({
+   });    
+           var marker1 = new Tmapv2.Marker({
       position: new Tmapv2.LatLng(35.13871864586712, 126.9274562217457), //Marker의 중심좌표 설정.
       map: map, //Marker가 표시될 Map 설정..
       title: '미니스톱 조선대 병원본관점',
          icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/supermarket-128.png",
         iconSize : new Tmapv2.Size(42, 42) 
    });
-
-   
-    var marker1 = new Tmapv2.Marker({
+           var marker1 = new Tmapv2.Marker({
                 position: new Tmapv2.LatLng(35.14619487207343, 126.93122617411066), //Marker의 중심좌표 설정.
                 map: map, //Marker가 표시될 Map 설정..
                 title: '맘스터치(조선대점)',
                 icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/cafe-128.png",
                 iconSize : new Tmapv2.Size(42, 42)
             });    
-    var marker1 = new Tmapv2.Marker({
+           var marker1 = new Tmapv2.Marker({
                 position: new Tmapv2.LatLng(35.14577174000281, 126.9307683482674), //Marker의 중심좌표 설정.
                 map: map, //Marker가 표시될 Map 설정..
                 title: '명랑핫도그 조선대점',
                 icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/cafe-128.png",
                 iconSize : new Tmapv2.Size(42, 42)
             });    
-    var marker1 = new Tmapv2.Marker({
+           var marker1 = new Tmapv2.Marker({
                 position: new Tmapv2.LatLng(35.13930071089182, 126.92564501704322), //Marker의 중심좌표 설정.
                 map: map, //Marker가 표시될 Map 설정..
                 title: '어등진국밥조대병원점',
                 icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/cafe-128.png",
                 iconSize : new Tmapv2.Size(42, 42)
-            });           
-                 
-   
-            
-            
-            var marker1 = new Tmapv2.Marker({
+            });                    
+           var marker1 = new Tmapv2.Marker({
                 position: new Tmapv2.LatLng(35.14440645761805, 126.92955324305255), //Marker의 중심좌표 설정.
                 map: map, //Marker가 표시될 Map 설정..
                 title: '무진장떡볶이    ',
                 icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/cafe-128.png",
                 iconSize : new Tmapv2.Size(42, 42)
-            });             
-
-            
-            var marker1 = new Tmapv2.Marker({
+            });                       
+           var marker1 = new Tmapv2.Marker({
                 position: new Tmapv2.LatLng(35.14718841105349, 126.93209017703713), //Marker의 중심좌표 설정.
                 map: map, //Marker가 표시될 Map 설정..
                 title: '커피현상소    ',
                 icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/coffee_shop-128.png",
                 iconSize : new Tmapv2.Size(42, 42)
-            }); 
-
-            
-            var marker1 = new Tmapv2.Marker({
+            });            
+           var marker1 = new Tmapv2.Marker({
                 position: new Tmapv2.LatLng(35.14690165047988, 126.93161613529563), //Marker의 중심좌표 설정.
                 map: map, //Marker가 표시될 Map 설정..
                 title: '김밥나라    ',
                 icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/cafe-128.png",
                 iconSize : new Tmapv2.Size(42, 42)
-            }); 
-            
-            var marker1 = new Tmapv2.Marker({
+            });            
+           var marker1 = new Tmapv2.Marker({
                 position: new Tmapv2.LatLng(35.14214601116509, 126.92484137213158), //Marker의 중심좌표 설정.
                 map: map, //Marker가 표시될 Map 설정..
                 title: '감성커피조선대점    ',
                 icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/coffee_shop-128.png",
                 iconSize : new Tmapv2.Size(42, 42)
             });
-            var marker1 = new Tmapv2.Marker({
+           var marker1 = new Tmapv2.Marker({
                 position: new Tmapv2.LatLng(35.141524045311655, 126.92451925460729), //Marker의 중심좌표 설정.
                 map: map, //Marker가 표시될 Map 설정..
                 title: '안녕커피    ',
                 icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/coffee_shop-128.png",
                 iconSize : new Tmapv2.Size(42, 42)
-            });
-            
-            var marker1 = new Tmapv2.Marker({
+            });           
+           var marker1 = new Tmapv2.Marker({
                 position: new Tmapv2.LatLng(35.145153669669526, 126.926786754825), //Marker의 중심좌표 설정.
                 map: map, //Marker가 표시될 Map 설정..
                 title: '도원약국    ',
                 icon : "https://cdn4.iconfinder.com/data/icons/medical-soft-1/512/travel_flag_pin_globe_gps_pointer_map_marker-128.png",
                 iconSize : new Tmapv2.Size(42, 42)
             });
-            var marker1 = new Tmapv2.Marker({
+           var marker1 = new Tmapv2.Marker({
                 position: new Tmapv2.LatLng(35.146767039701, 126.92820355616242), //Marker의 중심좌표 설정.
                 map: map, //Marker가 표시될 Map 설정..
                 title: '동명약국    ',
                 icon : "https://cdn4.iconfinder.com/data/icons/medical-soft-1/512/travel_flag_pin_globe_gps_pointer_map_marker-128.png",
                 iconSize : new Tmapv2.Size(42, 42)
             });
-
             var marker1 = new Tmapv2.Marker({
                 position: new Tmapv2.LatLng(35.146747884564455, 126.92780726302207), //Marker의 중심좌표 설정.
                 map: map, //Marker가 표시될 Map 설정..
@@ -405,41 +391,35 @@ text-align:center;
                 title: '로우딥빙스틸    ',
                 icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/coffee_shop-128.png",
                 iconSize : new Tmapv2.Size(42, 42)
-            });
-            
+            });          
             var marker1 = new Tmapv2.Marker({
                 position: new Tmapv2.LatLng(35.14338992773184, 126.92266443952809), //Marker의 중심좌표 설정.
                 map: map, //Marker가 표시될 Map 설정..
                 title: '카모    ',
                 icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/cafe-128.png",
                 iconSize : new Tmapv2.Size(42, 42)
-            });
-           
+            });           
             var marker1 = new Tmapv2.Marker({
                 position: new Tmapv2.LatLng( 35.14438466437155, 126.92355127161595), //Marker의 중심좌표 설정.
                 map: map, //Marker가 표시될 Map 설정..
                 title: '빙점    ',
                 icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/coffee_shop-128.png",
                 iconSize : new Tmapv2.Size(42, 42)
-            });
-           
+            });         
             var marker1 = new Tmapv2.Marker({
                 position: new Tmapv2.LatLng(  35.14506315709657, 126.9225193133873), //Marker의 중심좌표 설정.
                 map: map, //Marker가 표시될 Map 설정..
                 title: '입춘카페    ',
                 icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/coffee_shop-128.png",
                 iconSize : new Tmapv2.Size(42, 42)
-            });
-           
-            
+            });           
             var marker1 = new Tmapv2.Marker({
                 position: new Tmapv2.LatLng(35.14476049012876, 126.92178438814507), //Marker의 중심좌표 설정.
                 map: map, //Marker가 표시될 Map 설정..
                 title: '제임스본죽    ',
                 icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/cafe-128.png",
                 iconSize : new Tmapv2.Size(42, 42)
-            });
-           
+            });          
             var marker1 = new Tmapv2.Marker({
                 position: new Tmapv2.LatLng(  35.14917931171155, 126.92883168055184), //Marker의 중심좌표 설정.
                 map: map, //Marker가 표시될 Map 설정..
@@ -447,33 +427,27 @@ text-align:center;
                 icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/coffee_shop-128.png",
                 iconSize : new Tmapv2.Size(42, 42)
             });
-
             var marker1 = new Tmapv2.Marker({
                 position: new Tmapv2.LatLng(   35.148202057653165, 126.92464297691747), //Marker의 중심좌표 설정.
                 map: map, //Marker가 표시될 Map 설정..
                 title: ' 프라임픽(PRPK)    ',
                 icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/coffee_shop-128.png",
                 iconSize : new Tmapv2.Size(42, 42)
-            });
-           
+            });         
             var marker1 = new Tmapv2.Marker({
                 position: new Tmapv2.LatLng(35.14765152088224, 126.92217145925792), //Marker의 중심좌표 설정.
                 map: map, //Marker가 표시될 Map 설정..
                 title: '서석약국   ',
                 icon : "https://cdn4.iconfinder.com/data/icons/medical-soft-1/512/travel_flag_pin_globe_gps_pointer_map_marker-128.png",
                 iconSize : new Tmapv2.Size(42, 42)
-            });
-            
-           
+            });          
             var marker1 = new Tmapv2.Marker({
                 position: new Tmapv2.LatLng(    35.14758948877272, 126.9266095223604), //Marker의 중심좌표 설정.
                 map: map, //Marker가 표시될 Map 설정..
                 title: ' 힐링카페아만토    ',
                 icon : "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/coffee_shop-128.png",
                 iconSize : new Tmapv2.Size(42, 42)
-            });
-
-             
+            });            
             var marker1 = new Tmapv2.Marker({
                 position: new Tmapv2.LatLng(  35.145192042078, 126.92542798497529), //Marker의 중심좌표 설정.
                 map: map, //Marker가 표시될 Map 설정..
@@ -502,7 +476,8 @@ text-align:center;
                   'endX' : ends[0].x,
                   'endY' : ends[0].y,
                   'idx' : i+1,
-                  'color' : colorList[i]   
+                  'color' : colorList[i]  
+                  
                }), (i+1)*2000)   
             }
                      
@@ -541,14 +516,19 @@ text-align:center;
                         "resCoordType" : "EPSG3857",
                         "startName" : "출발지",
                         "endName" : "도착지",
-                        "passList" :xy //경유지 좌표
+                        "passList" :xy, //경유지 좌표,
+                        "timeSet" : timeSet[0]
                      },
                      success : function(response) {
                         var resultData = response.features;
                         //결과 출력
                         tDistance = "배달자"+ dataObject.idx +"의 거리 : "+ ((resultData[0].properties.totalDistance) / 1000).toFixed(1) + "km ";
-                           tTime = " 시간 : "+ ((resultData[0].properties.totalTime) / 60).toFixed(0) +timeplus1+ "분";
-                        document.getElementById("man" + dataObject.idx).innerHTML="<strong>"+tDistance + tTime+"</strong>";
+                      
+                           tTime = " 시간 : "+ ((resultData[0].properties.totalTime+timeSet[dataObject.idx]) / 60).toFixed(0) + "분";
+                 
+                           console.log(resultData[0].properties.totalTime)
+                        
+                        document.getElementById("man" + dataObject.idx).innerHTML="<strong>"+tDistance +tTime +"</strong>";
                      
                         //기존 그려진 라인 & 마커가 있다면 초기화
                         if (resultdrawArr.length > 0) {
@@ -636,23 +616,29 @@ text-align:center;
          
          $.ajax({
             type: 'POST',
-            url: 'http://192.168.56.1:5000/',
+            url: 'http://172.30.1.2:5000/',
             dataType : 'JSON', // 받아온 데이터를 json으로 인식
              data:{
                "drag":drag
+
             },
             success: function(rs){
             de1 = rs['result'][0]["user_id"];
             time1 = rs['result'][0]["time"][1];
-            timeplus1 = rs['result'][0]["time"][0];
+            timeplus1 = rs['result'][0]["time"][0]*60;
             de2 = rs['result'][1]["user_id"];
             time2 = rs['result'][1]["time"][1];
-            timeplus2 = rs['result'][0]["time"][0];
+            timeplus2 = rs['result'][1]["time"][0]*60;
             de3= rs['result'][2]["user_id"];
             time3= rs['result'][2]["time"][1];
-            timeplus3 = rs['result'][0]["time"][0];
-            console.log(timeplus1);
-            console.log(time2);
+            timeplus3 = rs['result'][2]["time"][0]*60;
+            console.log (time1);
+            console.log (rs['result'][0]);
+            console.log("timeplus1 = " + timeplus1);
+            console.log("timeplus2 = " +timeplus2);
+            console.log("timeplus3 = " + timeplus3);
+            timeSet = ["pass",timeplus1,timeplus2,timeplus3];
+            console.log("timeSet = "+ timeSet);
             setTimeout(()=> innerTest(), 100);
             },
             error: function(request, status, error){
@@ -717,7 +703,7 @@ text-align:center;
       })
    }
          
-      
+
       </script>
    
 <script>
@@ -733,4 +719,5 @@ text-align:center;
 
       
 </body>
+</head>
 </html>

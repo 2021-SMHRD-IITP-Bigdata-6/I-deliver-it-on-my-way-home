@@ -119,7 +119,7 @@
            <div class="shape"></div>
            <div class="shape"></div>
        </div>
-       <form method="get" action="deliverylist">
+       <form method="get" action="delivery2" >
            <h3>주문요청사항 </h3>
    
            <label for="name"><strong>성함</strong></label>
@@ -131,7 +131,7 @@
            <label for="odrer"><strong>주문요청사항</strong></label>
            <input type="text" placeholder="Order" name="odrer" style =height:200px;>
    
-           <button style="border-radius: 30px ">주문하기</button>
+           <button style="border-radius: 30px " href="Mypage">주문하기</button>
          
        </form>
    </body>
