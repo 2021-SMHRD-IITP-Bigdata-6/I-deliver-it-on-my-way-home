@@ -198,7 +198,49 @@ text-align:center;
 						});
 				return marker_s;
 			}
+			function Test(){
+		$.ajax({
+			type: 'GET',
+			url: 'http://192.168.56.1:5000/',
+			dataType : 'JSON', // 받아온 데이터를 json으로 인식
+		   // contentType: "application/json", // <--- 우리가 전송해줄내용이 json데이터이다
+			success: function(rs){
 
+			   // alert('성공! 데이터 값:' + rs['result'][0]["user_id"]+" " + rs['result'][0]["time"][0])
+			// window.location.href = "deliver1.jsp?medel=" + res;
+			de1 = rs['result'][0]["user_id"];
+			time = rs['result'][0]["time"][1];
+			
+			// controller로 이동
+			setTimeout(()=> innerTest(), 500); // 5초
+
+			console.log(de1);
+			},
+			error: function(request, status, error){
+				alert('ajax 통신 실패')
+				alert(error);
+			}
+		})
+	}
+
+	function innerTest(){
+
+		$.ajax({
+			type: 'GET',
+			url : '/ajaxTest',
+			data:{
+				"mem_id":de1,
+				"moving_time":time
+				},
+			success : function(res){
+				console.log(res.latitude);
+				console.log(res.longitude);
+				
+			},
+			error : function() {alert('error!');}
+
+		})
+	}
 			
 			//기본지도
 			function initTmap() {
@@ -474,7 +516,7 @@ text-align:center;
 				var tDistance;
 				var tTime;
 				for(let i =0;i < starts.length; i++){
-					colorList = ["#FF0000", "#0000FF", "#FFFF00","#00000"];
+					colorList = ["#FF0000", "#0000FF", "#FFFF00"];
 					
 					setTimeout(()=> del1({
 						'headers' : headers,
