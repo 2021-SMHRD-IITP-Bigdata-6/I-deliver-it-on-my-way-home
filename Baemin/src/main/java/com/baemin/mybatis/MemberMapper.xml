@@ -4,6 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
 <mapper namespace="member">
  <select id="login_check" resultType="String">
-  SELECT * FROM t_member WHERE mem_id=#{mem_id} and mem_pw=#{mem_pw}
+  SELECT mem_name FROM t_member WHERE mem_id=#{mem_id} and mem_pw=#{mem_pw}
  </select>
 </mapper>

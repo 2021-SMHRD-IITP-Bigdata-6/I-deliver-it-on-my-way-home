@@ -4,10 +4,10 @@
  
 <link rel="stylesheet" href="/css/user/login.css">
 </head>
-<body>
-   <main>
+<body style="background-color: #ecc9ab;">
+   <main style="background-color: #ead7c6;">
       <div class="login_box">
-           <a href="/"><img src="/img/bamin2.png" alt="이미지" class="bm_img"></a>
+           <a href="/"><img src="/img/로긴페이지1-001.png" alt="이미지" class="bm_img"></a>
             <form action="/join1" method="post" >
                <div class="input_aera">
                      <input type="text" name="mem_id" id="mem_id" class="mem_id" maxlength="20"  placeholder="아이디를 입력해 주세요" >

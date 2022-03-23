@@ -39,7 +39,7 @@ text-align:center;
 %>
 
 </head>
-<body>
+<body style="background-color: #ead7c6;">
 	<style>
 		.man {
 			position: absolute;
@@ -124,18 +124,14 @@ text-align:center;
 
 	 </style>
 		<!-- 190430 기존 지도를 모두 이미지 처리 위해 주석 처리 S -->
-		<div id="map_wrap" class="div_con">
-			<div id="map_div" class="div_box"> 
-				
-				<div class = "back" ><div style="margin-top: 8px;" OnClick="location.href ='Customer1'"><strong>Back</strong></div></div>
-								<div class = "man" ><div style="margin-top: 9px;margin-left: 20px;" id="man1" ></div><strong></strong></div> 
-								
-								
-								<div class="deli"><div style="margin-top: 20px;"><a href = "javascript:void(0);" onclick="popup();"><h1>배달 완료</h1></a></div></div>
+		<div class = "man" style="width:400px;height:80px;margin-top: 150px; margin-left: 20px; text-align: center;font-size: 24px;"><div style="margin-top: 15px;" id="man1" ></div><strong></strong></div> 
+		<div id="map_wrap" class="div_con" style="position:relative;top:300px;height:1155px;">
+			<div id="map_div" class="div_box"> 								
+							<div class="deli"style="margin-top: 10px;"><div style="margin-top: 20px;"><a href = "login_check"><h1>배달 완료</h1></a></div></div>
 							<div class="map_act_btn_wrap clear_box"></div>
 							<p id="result"></p>
 			
-			
+							<div class="ordermemo"style="width:500px;height:300px;background-color:#black; border-radius:2px;"></div>
 		
 		
  
