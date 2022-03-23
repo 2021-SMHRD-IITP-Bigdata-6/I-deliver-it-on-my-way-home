@@ -5,7 +5,11 @@
    <head>
      <!-- Design by foolishdeveloper.com -->
        <title>Glassmorphism login Form Tutorial in html css</title>
-    
+       <%    
+       request.setCharacterEncoding("UTF-8");
+       String drag = request.getParameter("drag");
+       String drag1 = request.getParameter("drag1");
+   %>  
        <link rel="preconnect" href="https://fonts.gstatic.com">
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
@@ -22,8 +26,8 @@
        background-color: #ffffff;
    }
    .background{
-       width: 430px;
-       height: 820px;
+       width: 100%;
+       height: 100%;
        position: absolute;
        transform: translate(-50%,-50%);
        left: 50%;
@@ -54,7 +58,7 @@
    } */
    form{
        height: 620px;
-       width: 400px;
+       width: 700px;
        background-color: rgba(243, 241, 241, 0.998);
        position: absolute;
        transform: translate(-50%,-50%);
@@ -115,6 +119,7 @@
        </style>
    </head>  
    <body>
+    
        <div class="background">
            <div class="shape"></div>
            <div class="shape"></div>
@@ -123,17 +128,29 @@
            <h3>주문요청사항 </h3>
    
            <label for="name"><strong>성함</strong></label>
-           <input type="text" placeholder="Name" name="name">
+           <input type="text" placeholder="Name" name="name" id="name">
    
            <label for="Phone"><strong>연락처</strong></label>
-           <input type="text" placeholder="Phone" name="Phone">
+           <input type="text" placeholder="Phone" name="Phone" id="Phone">
 
-           <label for="odrer"><strong>주문요청사항</strong></label>
-           <input type="text" placeholder="Order" name="odrer" style =height:200px;>
-   
-           <button style="border-radius: 30px " href="Mypage">주문하기</button>
+           <label for="order"><strong>주문요청사항</strong></label>
+           <input type="text" placeholder="Order" name="order" style =height:200px; id = "order">
+
+          
+           <button type="button"style="border-radius: 30px "onclick="move()" >주문하기</button>
          
        </form>
+       <script>
+        var drag = "<%=drag%>";
+       console.log(drag)
+       function move() {
+        let name = document.getElementById("name").value;
+        let phone = document.getElementById("Phone").value;
+        let order = document.getElementById("order").value;
+
+        location.href = "delivery2?name="+name+"&phone="+phone+"&order="+order+"&drag="+drag
+       }
+   </script>
    </body>
    </html>
    

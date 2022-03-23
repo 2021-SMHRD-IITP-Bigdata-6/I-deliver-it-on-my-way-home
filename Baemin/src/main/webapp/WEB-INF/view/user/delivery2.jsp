@@ -35,10 +35,11 @@ text-align:center;
 <%    
     request.setCharacterEncoding("UTF-8");
     String drag = request.getParameter("drag");
-	 String drag1 = request.getParameter("drag1");
+	 
 %>
 
 </head>
+
 <body style="background-color: #ead7c6;">
 	<style>
 		.man {
@@ -131,7 +132,13 @@ text-align:center;
 							<div class="map_act_btn_wrap clear_box"></div>
 							<p id="result"></p>
 			
-			<div class="ordermemo"style="width:850px;height:380px; background-color: #fff; border-radius:5%; position: relative;top:1580px;left:50px;"></div>
+			<div class="ordermemo"style="width:850px;height:380px; background-color: #fff; border-radius:5%; position: relative;top:1580px;left:50px;">
+				<div style="font-size: 40px; padding-top: 40px;padding-left: 30px;">주문자 : <%=request.getParameter("name")%><br></div>
+				<div style="font-size: 40px; padding-top: 40px;padding-left: 30px;"> 연락처 : <%=request.getParameter("phone")%></div><br>
+				<div style="font-size: 30px; padding-top: 10px;padding-left: 30px;">요청사항 </div>
+				<div style="font-size: 40px; padding-left: 30px;"><strong>	<%=request.getParameter("order")%></strong></div>
+
+				</div>
 		
 		
  

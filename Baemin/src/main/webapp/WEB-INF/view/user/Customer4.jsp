@@ -133,12 +133,17 @@ text-align:center;
            <!--  <div class = "back" ><div style="margin-top: 8px;" OnClick="location.href ='Customer1'"><strong>Back</strong></div></div> -->
                    
                         
-                        <div class="deli"><div style="margin-top: -30px;"><a href = "javascript:void(0);" onclick="popup();"><h1>주문하기</h1></a></div></div>
+                        <div class="deli"><div style="margin-top: -30px;"><a href="javascript:void(0);" onclick="a()"><h1>주문하기</h1></a></div></div>
                      <div class="map_act_btn_wrap clear_box"></div>
                      <p id="result"></p>
          
          
-   
+                     <script>
+                        function a(){
+                       
+                             location.href='memo?drag='+drag
+                        }
+                    </script>
  
  
 
@@ -713,8 +718,8 @@ text-align:center;
         function popup(){
             var url = "memo";
             var name = "memo test";
-            var option = "width = 550, height =825, top = 100, left = 600, location = no"
-            window.open(url, name, option);
+            var option = "width = 100%, height =100%, top = 100, left = 600, location = no"
+            window.open(url, name, channelmode=0);
         }
     </script>
 
