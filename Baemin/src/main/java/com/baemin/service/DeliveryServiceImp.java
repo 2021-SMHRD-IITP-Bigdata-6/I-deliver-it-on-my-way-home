@@ -18,6 +18,16 @@ public class DeliveryServiceImp implements DeliveryService {
 		return deliveryDao.Delivery_check(vo);
 		
 	}
+	@Override
+	public Delivery Delivery_check2(Delivery vo) {
+		return deliveryDao.Delivery_check2(vo);
+		
+	}
+	@Override
+	public Delivery Delivery_check3(Delivery vo) {
+		return deliveryDao.Delivery_check3(vo);
+		
+	}
 
 	
 }

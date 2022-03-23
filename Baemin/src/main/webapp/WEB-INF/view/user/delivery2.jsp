@@ -39,7 +39,7 @@ text-align:center;
 %>
 
 </head>
-<body onload="initTmap();">
+<body>
 	<style>
 		.man {
 			position: absolute;
@@ -129,8 +129,7 @@ text-align:center;
 				
 				<div class = "back" ><div style="margin-top: 8px;" OnClick="location.href ='Customer1'"><strong>Back</strong></div></div>
 								<div class = "man" ><div style="margin-top: 9px;margin-left: 20px;" id="man1" ></div><strong></strong></div> 
-								<div class = "man1" ><div style="margin-top: 9px;margin-left: 20px;" id="man2" ><strong></strong></div></div> 
-								<div class = "man2" ><div style="margin-top: 9px;margin-left: 20px;" id="man3" ><strong></strong> </div></div> 
+								
 								
 								<div class="deli"><div style="margin-top: 20px;"><a href = "javascript:void(0);" onclick="popup();"><h1>배달 완료</h1></a></div></div>
 							<div class="map_act_btn_wrap clear_box"></div>
@@ -184,16 +183,33 @@ text-align:center;
 			var delivery3 = "35.14215814632468, 126.92632162876542";
 			var delivery3y = "35.14215814632468";
 			var delivery3x = "126.92632162876542";
-			var latitude;
-			var longitude;
+			let latitude;
+			let longitude;
+
+			$(document).ready(()=>{
+
+				// ajax 이용해서 값 가져오기
+				Test()
+
+				setTimeout(() => {
+					console.log(latitude +" , " + longitude)
+					initTmap()
+				}, 1000 ); 
+			
+			
+			});
 	
 		
 		function Test(){
+			
             $.ajax({
-                type: 'GET',
+                type: 'POST',
                 url: 'http://192.168.56.1:5000/',
                 dataType : 'JSON', // 받아온 데이터를 json으로 인식
                // contentType: "application/json", // <--- 우리가 전송해줄내용이 json데이터이다
+			   data:{
+				"drag":drag
+			   },
                 success: function(rs){
 
                    // alert('성공! 데이터 값:' + rs['result'][0]["user_id"]+" " + rs['result'][0]["time"][0])
@@ -202,7 +218,7 @@ text-align:center;
 				time = rs['result'][0]["time"][1];
 				
 				// controller로 이동
-				setTimeout(()=> innerTest(), 500); // 5초
+				setTimeout(()=> innerTest(), 100); // 5초
 			
 
 				console.log(de1);
@@ -212,6 +228,7 @@ text-align:center;
                     alert(error);
                 }
             })
+			
         }
 
 		function innerTest(){
@@ -257,7 +274,7 @@ text-align:center;
 
 				//배달자 x/y위치 입니다.
 				var starts = [
-									{x: 126.9259835634641, y : 35.14020505535849}
+									{x: longitude, y : latitude}
 									
 									]
 				console.log(starts);
@@ -284,7 +301,6 @@ text-align:center;
 					marker_s = setStart(starts[i].y, starts[i].x);		
 				}
 
-				
 						
 				// 도착
 				marker_e = new Tmapv2.Marker(
@@ -401,12 +417,10 @@ text-align:center;
 						'idx' : i+1,
 						'color' : colorList[i]	
 					}), (i+1)*2000)	
-				}
-
-				Test();
-							
+				}	
 						
 			}
+
 			function addComma(num) {
 				var regexp = /\B(?=(\d{3})+(?!\d))/g;
 				return num.toString().replace(regexp, ',');
@@ -531,16 +545,6 @@ text-align:center;
 						});
 					}
 			
-						
-			
-			
-
-
-
-
-
-			 
-			
 			
 		
 		</script>
@@ -559,9 +563,6 @@ text-align:center;
         }
     </script>
 
-<script>
-
-</script>
 
 </body>
 </html>
