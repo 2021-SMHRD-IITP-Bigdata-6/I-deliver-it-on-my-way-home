@@ -124,20 +124,21 @@
            <div class="shape"></div>
            <div class="shape"></div>
        </div>
-       <form method="get" action="delivery2" >
-           <h3>주문요청사항 </h3>
+       <form method="get" action="delivery2" style="width:80%; height:80%">
+           <h3 style="font-size: 60px;"><strong>주문요청사항</strong></h3>
+        <br>
+        <br>
+           <label for="name" style="font-size: 50px;" >성함</label>
+           <input type="text" placeholder="Name" name="name" id="name" style="height:100px;font-size: 50px;">
    
-           <label for="name"><strong>성함</strong></label>
-           <input type="text" placeholder="Name" name="name" id="name">
-   
-           <label for="Phone"><strong>연락처</strong></label>
-           <input type="text" placeholder="Phone" name="Phone" id="Phone">
+           <label for="Phone" style="font-size: 50px;" >연락처</label>
+           <input type="text" placeholder="Phone" name="Phone" id="Phone"  style="height:100px;font-size: 50px;">
 
-           <label for="order"><strong>주문요청사항</strong></label>
-           <input type="text" placeholder="Order" name="order" style =height:200px; id = "order">
+           <label for="order" style="font-size: 50px;" >주문요청사항</label>
+           <input type="text" placeholder="Order" name="order" style ="height:300px;font-size:50px;" id = "order" >
 
           
-           <button type="button"style="border-radius: 30px "onclick="move()" >주문하기</button>
+           <button type="button"style="height:100px;border-radius: 30px;font-size:50px;color:#fff "onclick="move()" >주문하기</button>
          
        </form>
        <script>

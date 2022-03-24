@@ -111,7 +111,6 @@ public class UserController {
    ModelAndView mav = new ModelAndView();
     if (mem_name != null) { // 로그인 성공 시
      mav.setViewName("user/Mypage"); // 뷰의 이름
-     System.out.println("여기");
      } else { // 로그인 실패 시
        mav.setViewName("user/login"); 
        mav.addObject("message", "error");
@@ -120,8 +119,7 @@ public class UserController {
        return mav;
      }
      
-
-
+  
 
 @RequestMapping("logout.do")
   public ModelAndView logout(HttpSession session, ModelAndView mav) {

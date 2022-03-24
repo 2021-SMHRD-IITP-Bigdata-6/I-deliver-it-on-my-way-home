@@ -58,6 +58,10 @@ public class DeliveryController {
     	
     	return "/user/delivery3";
     }
+    @GetMapping("/review")
+    public String review(){
  
-
+        return "user/review";
+    }
+    
 }

@@ -124,23 +124,34 @@ text-align:center;
 		}
 
 	 </style>
+	 <%
+	 String name = request.getParameter("name");
+	 String order = request.getParameter("order");
+	 String phone = request.getParameter("phone");
+	 %>
 		<!-- 190430 기존 지도를 모두 이미지 처리 위해 주석 처리 S -->
 		<div class = "man" style="width:800px;height:80px;margin-top: 30px; margin-left: 20px; text-align: center;font-size: 36px;"><div style="margin-top: 15px;" id="man1" ></div><strong></strong></div> 
 		<div id="map_wrap" class="div_con" style="position:relative;top:-220px;height:1550px;">
 			<div id="map_div" class="div_box" > 								
-							<div class="deli"style="margin-top: 10px;"><div style="margin-top: 20px;"><a href = "login_check"><h1>배달 완료</h1></a></div></div>
+							<div class="deli"style="margin-top: 10px;"><div style="margin-top: 20px;"><a onclick="move()"><h1>배달 완료</h1></a></div></div>
 							<div class="map_act_btn_wrap clear_box"></div>
 							<p id="result"></p>
 			
 			<div class="ordermemo"style="width:850px;height:380px; background-color: #fff; border-radius:5%; position: relative;top:1800px;left:50px;">
-				<div style="font-size: 40px; padding-top: 40px;padding-left: 30px;">주문자 : <%=request.getParameter("name")%><br></div>
-				<div style="font-size: 40px; padding-top: 40px;padding-left: 30px;"> 연락처 : <%=request.getParameter("phone")%></div><br>
+				<div style="font-size: 40px; padding-top: 40px;padding-left: 30px;">주문자 : <%=name%><br></div>
+				<div style="font-size: 40px; padding-top: 40px;padding-left: 30px;"> 연락처 : <%=phone%></div><br>
 				<div style="font-size: 30px; padding-top: 10px;padding-left: 30px;">요청사항 </div>
-				<div style="font-size: 40px; padding-left: 30px;"><strong>	<%=request.getParameter("order")%></strong></div>
+				<div style="font-size: 40px; padding-left: 30px;"><strong>	<%=order%></strong></div>
 
 				</div>
-		
-		
+	
+				<script>
+					function move() {
+					   name = "<%=name%>";
+					   order = "<%=order%>";
+					   location.href = "review?name="+name+"&order="+order
+					}
+			   </script>
  
  
 

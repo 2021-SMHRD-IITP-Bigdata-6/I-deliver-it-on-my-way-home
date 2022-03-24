@@ -247,9 +247,9 @@ main{
                          </a>
                      </div>
                      <div class="content1 s-horizon">
-                        <a href="/delivery1">
+                        <a href="/review">
                             <span class="img_box">
-                                <img src="/img/review123.png" alt="리뷰보기">
+                                <img src="/img/review124.png" alt="배달이력">
                              </span>
                              <figcaption>리뷰보기</figcaption>
                          </a>
