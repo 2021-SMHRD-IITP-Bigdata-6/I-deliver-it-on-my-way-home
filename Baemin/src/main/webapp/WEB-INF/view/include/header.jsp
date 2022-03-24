@@ -26,8 +26,8 @@ header .admin_page_btn a {
 	<!-- <body> -->
 
 
-	<header>
-		<div id="header">
+	<header style="background-color: #ead7c6;">
+		<div id="header" >
 			<a href="/"><img src="/img/가는길에배달해조1-001 (1).png" alt="이미지"> </a>
 
 			<c:if test="${SPRING_SECURITY_CONTEXT != null }">

@@ -29,6 +29,9 @@ public class MainController {
        return "user/memo";
     }
  
-  
+    @GetMapping("/home")
+    public String home() {
+       return "/home";
+    }
 
 }

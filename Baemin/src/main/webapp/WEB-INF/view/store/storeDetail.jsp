@@ -30,66 +30,23 @@
 				</span><br>
                  --%>
                    
-           		<span><i class="fas fa-heart" ></i> 찜 </span>
+           		
                    	
                     
-                <span class="likes_count" data-count=0 >0</span>
+               
                   
 			</div>
-               	<div>
-               		<span class="store_review_count" data-review_count="0"> 리뷰 0</span>
-               		<span>사장님 댓글 0</span>
-            	</div>
-                
-               	<div id="min_delevery" data-min_delevery="${info.mindelevery }">최소주문금액 <fm:formatNumber value="${info.mindelevery }" pattern="###,###" />원</div>
-               	<div>예상 배달시간 ${info.deleverytime  }분</div>
-               	<div id="delevery_tip" data-delevery_tip="${info.deleverytip }">배달팁 <fm:formatNumber value="${info.deleverytip }" pattern="###,###" />원</div>
+               	
+               	<!-- <div>예상 배달시간 ${info.deleverytime  }분</div>
+               	<div id="delevery_tip" data-delevery_tip="${info.deleverytip }">배달팁 <fm:formatNumber value="${info.deleverytip }" pattern="###,###" />원</div> -->
 		</div>
     </nav>
 
 
-	<!-- 모바일 카트 -->
-   	<div class="m_cart_img">
-   		<div class="m_cart_img_box">
-   			<i class="fas fa-shopping-cart"></i>
-   			<span class="m_cart_count"></span>
-   		</div>
-   	</div>
-  	<!-- 모바일 카트 -->
     
     
     
-	<!-- 장바구니 -->    
-    <aside id="cart">
-        <div class="cart">	
-            <h2>장바구니</h2>
-            <i class="far fa-trash-alt deleteAll" ></i>
-            
-            <div class="cart_list">
-	            <ul>
-	            	<!-- 
-					<li>
-						<h3>메뉴</h3>
-  							<div>가격</div>
-  							<div>수량 : 0 </div>
-  							<div> 옵션  </div>
-  							<div>합계 : 0원</div>
-  							<button class="cancle_btn"> ｘ </button> 
-		            </li>
-  							-->
-	            </ul>
-            </div>
-            
-            <div class="order_btn_box">
-            	<div class="total">장바구니가 비었습니다.</div>
-	            <button class="order_btn" disabled>주문하기</button>
-            </div>
-        </div>
-        
-    </aside>
-    <div class="alarm">장바구니에 담았습니다</div>
-	<!-- 장바구니 -->    
-	   
+
 
 	<main>
 		<div class="offset"></div>

@@ -239,7 +239,7 @@ main{
                     </div>
                     <div class="content1_wrap s-horizon_wrap"> 
                     <div class="content1 s-horizon">
-                        <a href="/delivery1">
+                        <a href="/store/100/62006">
                             <span class="img_box">
                                 <img src="/img/store123.png" alt="추천가게">
                              </span>
