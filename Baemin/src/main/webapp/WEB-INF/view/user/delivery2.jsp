@@ -15,7 +15,7 @@ background-color: rgb(255, 255, 255);
 width: 30%;
 left:600px;
 height: 85px;
-bottom: 10px;
+bottom: -230px;
 display: flex;
 border-radius: 30px;
 text-align:center;
@@ -125,14 +125,14 @@ text-align:center;
 
 	 </style>
 		<!-- 190430 기존 지도를 모두 이미지 처리 위해 주석 처리 S -->
-		<div class = "man" style="width:400px;height:80px;margin-top: 150px; margin-left: 20px; text-align: center;font-size: 24px;"><div style="margin-top: 15px;" id="man1" ></div><strong></strong></div> 
-		<div id="map_wrap" class="div_con" style="position:relative;top:0px;height:1550px;">
-			<div id="map_div" class="div_box"> 								
+		<div class = "man" style="width:800px;height:80px;margin-top: 30px; margin-left: 20px; text-align: center;font-size: 36px;"><div style="margin-top: 15px;" id="man1" ></div><strong></strong></div> 
+		<div id="map_wrap" class="div_con" style="position:relative;top:-220px;height:1550px;">
+			<div id="map_div" class="div_box" > 								
 							<div class="deli"style="margin-top: 10px;"><div style="margin-top: 20px;"><a href = "login_check"><h1>배달 완료</h1></a></div></div>
 							<div class="map_act_btn_wrap clear_box"></div>
 							<p id="result"></p>
 			
-			<div class="ordermemo"style="width:850px;height:380px; background-color: #fff; border-radius:5%; position: relative;top:1580px;left:50px;">
+			<div class="ordermemo"style="width:850px;height:380px; background-color: #fff; border-radius:5%; position: relative;top:1800px;left:50px;">
 				<div style="font-size: 40px; padding-top: 40px;padding-left: 30px;">주문자 : <%=request.getParameter("name")%><br></div>
 				<div style="font-size: 40px; padding-top: 40px;padding-left: 30px;"> 연락처 : <%=request.getParameter("phone")%></div><br>
 				<div style="font-size: 30px; padding-top: 10px;padding-left: 30px;">요청사항 </div>
@@ -291,7 +291,7 @@ text-align:center;
 				map = new Tmapv2.Map("map_div", {
 					center : new Tmapv2.LatLng(strArray[0],strArray1[0]),
 					width : "100%",
-					height : "1050px",
+					height : "1275px",
 					zoom : 17,
 					zoomControl : true,
 					scrollwheel : true
@@ -462,7 +462,7 @@ text-align:center;
 							success : function(response) {
 								var resultData = response.features;
 								//결과 출력
-								tDistance = "배달 경로 : "+ ((resultData[0].properties.totalDistance) / 1000).toFixed(1) + "km ";
+								tDistance = "추천 배달 경로의 거리 : "+ ((resultData[0].properties.totalDistance) / 1000).toFixed(1) + "km ";
 							   tTime = " 시간 : "+ ((resultData[0].properties.totalTime) / 60).toFixed(0) + "분";
 								document.getElementById("man" + dataObject.idx).innerHTML="<strong>"+tDistance + tTime+"</strong>";
 							
