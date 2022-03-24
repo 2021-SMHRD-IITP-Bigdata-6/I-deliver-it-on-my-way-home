@@ -79,6 +79,7 @@
 
     <!-- 푸터 -->
     <%@ include file="/WEB-INF/view//include/footer.jsp" %>
+    
     <!-- 푸터 -->
 
 	<script type="text/javascript" src="/js/store/store.js" ></script>
