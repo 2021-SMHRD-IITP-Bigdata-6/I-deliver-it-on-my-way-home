@@ -36,10 +36,10 @@
 			</span>
 			
 			<span>
-				<span>최소주문금액 <fm:formatNumber value="${storeList.mindelevery }" pattern="###,###" />원</span>
-				<span>배달팁 <fm:formatNumber value="${storeList.deleverytip }" pattern="###,###" />원</span>
+				
+				<span> </span>
 			</span>
-			<span>배달시간 ${storeList.deleverytime }분</span>
+			<span></span>
 			</a>
 		</div>
 		

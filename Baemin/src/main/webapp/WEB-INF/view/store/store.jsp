@@ -7,17 +7,22 @@
 
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 
-
+<body style="background-color: #ead7c6;">
     <!-- 콘텐츠 -->
     <main>
+        <style>
+            .Ys{
+              background-color : #ead7c6"
+            }  
+          </style>
         <div class="container">
             <div class="category" data-category="${category}">
                 <ul>
-                    <li data-category ='100' onclick="location.href='/store/100/${address1 }'"><span>피자</span></li>
+                    <li data-category ='100' onclick="location.href='/store/100/${address1 }'"><span style="color: black;">카페/디저트</span></li>
                     <li data-category ='101' onclick="location.href='/store/101/${address1 }'"><span>치킨</span></li>
                     <li data-category ='102' onclick="location.href='/store/102/${address1}'"><span>패스트푸드</span></li>
                     <li data-category ='103' onclick="location.href='/store/103/${address1}'"><span>분식</span></li>
-                    <li data-category ='104' onclick="location.href='/store/104/${address1}'"><span>카페/디저트</span></li>
+                    <li data-category ='104' onclick="location.href='/store/104/${address1}'"><span>피자</span></li>
                     <li data-category ='105' onclick="location.href='/store/105/${address1}'"><span>돈까스/일식</span></li>
                     <li data-category ='106' onclick="location.href='/store/106/${address1}'"><span>중국집</span></li>
                     <li data-category ='107' onclick="location.href='/store/107/${address1}'"><span>족발/보쌈</span></li>
@@ -32,12 +37,12 @@
 
            <div class="option">
                 <ul>    
-                	<li data-sort="기본순">기본순</li>
-                    <li data-sort="배달 빠른 순">배달 빠른 순</li>
-                    <li data-sort="배달팁 낮은 순">배달팁 낮은 순</li>
-                    <li data-sort="별점 높은 순">별점 높은 순</li>
-                    <li data-sort="리뷰 많은 순">리뷰 많은 순</li>
-                    <li data-sort="최소 주문 금액 순">최소 주문 금액 순</li>
+                	<li data-sort="기본순" style="background-color: #ead7c6;">기본순</li>
+                    <li data-sort="배달 빠른 순" style="background-color: #ead7c6;">배달 빠른 순</li>
+                    
+                    <li data-sort="별점 높은 순"style="background-color: #ead7c6;">별점 높은 순</li>
+                    <li data-sort="리뷰 많은 순" style="background-color: #ead7c6;">리뷰 많은 순</li>
+                    <li data-sort="최소 주문 금액 순" style="background-color: #ead7c6;">최소 주문 금액 순</li>
                 </ul> 
            </div>
            
